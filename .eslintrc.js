@@ -28,6 +28,7 @@ module.exports = {
   },
   // add your custom rules here
   rules: {
+    'linebreak-style': 0,
     'vue/no-parsing-error':  [2, {
       "x-invalid-end-tag": false
     }],
