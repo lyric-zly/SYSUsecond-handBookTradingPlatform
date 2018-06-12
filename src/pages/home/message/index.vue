@@ -2,42 +2,30 @@
   <div class="wrapped">
     <div class="messagetype">
       <div class="chatzone">
-        <image class="chaticon" src="https://upload-images.jianshu.io/upload_images/1409578-e8a1839fcfa576eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <text class="unchosedtext"> 对话 </text>
+        <image class="chaticon" src="https://upload-images.jianshu.io/upload_images/1409578-6cf9b27bb569f9fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <text class="chosedtext"> 对话 </text>
       </div>
       <div class="securedzone">
-        <image class="securedicon" src="https://upload-images.jianshu.io/upload_images/1409578-38cd6c89f304d208.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <text class="chosedtext"> 通知 </text>
+        <image class="securedicon" src="https://upload-images.jianshu.io/upload_images/1409578-e71f1d77aebc583d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <text class="unchosedtext"> 通知 </text>
       </div>
     </div>
-    
-    
-    <div class="securedlist">
+    <div class="chatlist">
       <list class="list">
-      <cell class="cell" v-for="item in boxes" v-if="item.publisherId==15331060">
-        <div class="secureddetail">
-          <text class="detailtextnotread"> 您的书《{{item.name}}》正在出售</text>
-        </div>
-        <div class="securedtime">
-          <text class="timetextnotread">2018.6.15</text>
-          <text class="timetextnotread">22:03</text>
-        </div>
-      </cell>
-      
-      /* 只是为了显示已读灰色效果，主体用上面即可， 没来的及改   */
-       <cell class="cell">
-        <div class="secureddetail">
-          <text class="detailtextread"> 您的书《牛虻》正在出售</text>
-        </div>
-        <div class="securedtime">
-          <text class="timetextread">2018.6.15</text>
-          <text class="timetextread">20:03</text>
-        </div>
-      </cell>
+        <cell class="cell" v-for="item in boxes" :key="item.sessionId">
+          <image class="sellervir" src="https://upload-images.jianshu.io/upload_images/1409578-e846c3ea7c900734.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+          <div class="chattextzone">
+            <div class="chatnametime">
+              <text class="sellernametext">{{item.senderId}} </text>
+              <text class="posttimetext">{{item.max}}</text>
+            </div>
+            <div class="chatdetail">
+              <text class="chatdetailtext">{{item.content}}</text>
+            </div>
+          </div>
+        </cell>
       </list>
     </div>
-    
-    
     <div class="footerzone">
       <div class="footer">
         <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-ffd1470f7531581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
@@ -49,26 +37,25 @@
 </template>
 
 <script>
-  export default {
-    data (){
-      return{
-        boxes: [{
-          name: '小王子',
-          description: '可刀可刀，可刀可刀。超级好看超级好看。超级好看超级好看',
-          price:18,
-          publisherId:15331060,
-        }, {
-          bookpicture:[
-            'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'
-          ],
-          name: '小王子',
-          description: '可刀可刀，可刀可刀。超级好看超级好看。超级好看超级好看',
-          price:18,
-          publisherId: '妮娜',
-        }]
-      }
-    }
-  }
+export default {
+  data() {
+    return {
+      boxes: [{
+        sessionId: 1,
+        senderId: 15331060,
+        recieverId: 15331059,
+        content: '你好，请问在吗？',
+        max: '2018-06-07T07:49:39.000Z',
+      }, {
+        sessionId: 2,
+        senderId: 15331078,
+        recieverId: 15331059,
+        content: '你好，请问在吗？请问《小王子》还在吗还在吗？',
+        max: '2018-06-07 07:49:39',
+      }],
+    };
+  },
+};
 </script>
 
 <style type="text/css">
@@ -88,122 +75,136 @@ input::-webkit-input-placeholder{
   padding-top: 20px;
   padding-bottom: 10px;
   flex-direction: row;
-  justify-content:space-between;
-  width:100%;
-  height:9%;
-  border-bottom:2px gray solid;
-  
+  justify-content: space-between;
+  width: 100%;
+  height: 9%;
+  border-bottom: 2px gray solid;
 }
 .chatzone{
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  width:50%;
-  height:85%;
-  border-right:1px gray solid;
+  width: 50%;
+  height: 85%;
+  border-right: 1px gray solid;
 }
-
 .chaticon{
-  height:60px;
-  width:60px; 
+  height: 60px;
+  width: 60px;
 }
-
 .chosedtext{
   font-size: 40px;
-  color:#00CACA;
+  color: #00CACA;
 }
 
 .securedzone{
   flex-direction: row;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  width:50%;
-  height:85%;
+  width: 50%;
+  height: 85%;
 }
 
 .securedicon{
-  height:70px;
-  width:70px; 
+  height: 70px;
+  width: 70px;
 }
 
 .unchosedtext{
   font-size: 40px;
-  color:#C0C0C0;
+  color: #C0C0C0;
 }
 
-.securedlist{
-  width:100%;
-  height:50%;
-  border-bottom:1px gray solid;
+.chatlist{
+  /*flex-direction: column;*/
+  /*justify-content: flex-start;*/
+  width: 100%;
+  height: 50%;
+  /*border-bottom: 2px gray solid;*/
 }
+
 .list{
   flex-direction: column;
-   width:100%;
+  width: 100%;
 }
+
 .cell{
-  padding: 20px 15px 5px 25px;
+  padding-top: 20px;
+  /*padding-top: 20px;*/
+  padding-bottom: 5px;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px gray solid;
+}
+
+.chatvirzone{
+  /*justify-content:center;
+  align-items: center;*/
+  width: 120px;
+  height: 90%;
+}
+.sellervir{
+  height: 120px;
+  width: 120px;
+}
+
+.chattextzone{
+  flex-direction: column;
+  justify-content: center;
+  width: 83%;
+  height: 100%;
+}
+
+.chatnametime{
   flex-direction: row;
   justify-content: space-between;
-  width:100%;
-  height:130px;
-  border-bottom:1px gray solid;
+  width: 100%;
+}
+/*.sellername{
+  width: 70%;
+  height: 100%;
+}*/
+.sellernametext{
+  font-size: 35px;
+  font-weight: bold;
 }
 
-.secureddetail{
-  width:70%;
-  height:90%;
-  flex-direction: column;
-  justify-content:center;
+.posttimetext{
+  color: gray;
 }
-.detailtextnotread{
-  font-size:37px;
-  font-weight:bold;
-  text-overflow:ellipsis;
+
+
+.chatdetailtext{
+  color: gray;
+  font-size: 30px;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 92%;
 }
-.detailtextread{
-  font-size:37px;
-  font-weight:bold;
-  color:gray;
-  text-overflow:ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-.securedtime{
-  width:30%;
-  height:90%;
-  flex-direction: column;
-  justify-content:center;
-  align-items:flex-end;
-}
-.timetextnotread{}
-.timetextread{
-  color:gray;
-}
-
-
 
 .footerzone{
-  justify-content:center;
+  justify-content: center;
   align-items: center;
-  position:absolute;
-  bottom:0;
-  width:100%;
-  height:9%;
-  border-top:2px gray solid;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 9%;
+  border-top: 2px gray solid;
 }
 .footer{
  /* margin-top:10px;*/
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-  position:absolute;
-  width:100%;
-  height:100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 .footericon{
-  height:70px;
-  width:70px;
+  height: 70px;
+  width: 70px;
 }
 </style>

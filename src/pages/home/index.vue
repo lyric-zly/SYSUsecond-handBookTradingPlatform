@@ -18,7 +18,7 @@
     </div>
     <div class="listzone">
       <list class="list">
-      <cell class="cell" v-for="item in boxes">
+      <cell class="cell" v-for="item in boxes" :key="item.bookId">
         <image class="bookpicture" :src="item.bookpicture"/>
         <div class="textinfozone">
           <text class="bookname">书名：《{{item.name}}》 </text>
@@ -48,6 +48,7 @@ export default {
     return {
       boxes: [
         {
+          bookId: 1,
           bookpicture: [
             'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
           ],
@@ -57,6 +58,7 @@ export default {
           publisherId: '妮娜',
         },
         {
+          bookId: 2,
           bookpicture: [
             'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
           ],
@@ -66,6 +68,7 @@ export default {
           publisherId: '妮娜',
         },
         {
+          bookId: 3,
           bookpicture: [
             'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
           ],
@@ -240,7 +243,7 @@ input::-webkit-input-placeholder {
   justify-content: center;
   align-items: center;
   background: white;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 9%;
