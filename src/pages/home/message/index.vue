@@ -2,22 +2,22 @@
   <div class="wrapped">
     <div class="messagetype">
       <div class="chatzone">
-        <image class="chaticon" src="https://upload-images.jianshu.io/upload_images/1409578-6cf9b27bb569f9fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="chaticon" src="https://upload-images.jianshu.io/upload_images/1409578-6cf9b27bb569f9fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
         <text class="chosedtext"> 对话 </text>
       </div>
       <div class="securedzone">
-        <image class="securedicon" src="https://upload-images.jianshu.io/upload_images/1409578-e71f1d77aebc583d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="securedicon" src="https://upload-images.jianshu.io/upload_images/1409578-e71f1d77aebc583d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
         <text class="unchosedtext"> 通知 </text>
       </div>
     </div>
     <div class="chatlist">
       <list class="list">
         <cell class="cell" v-for="item in boxes" :key="item.sessionId">
-          <image class="sellervir" src="https://upload-images.jianshu.io/upload_images/1409578-e846c3ea7c900734.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+          <image class="sellervir" src="https://upload-images.jianshu.io/upload_images/1409578-e846c3ea7c900734.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
           <div class="chattextzone">
             <div class="chatnametime">
               <text class="sellernametext">{{item.senderId}} </text>
-              <text class="posttimetext">{{item.max}}</text>
+              <text class="posttimetext">{{item.time}}</text>
             </div>
             <div class="chatdetail">
               <text class="chatdetailtext">{{item.content}}</text>
@@ -28,15 +28,16 @@
     </div>
     <div class="footerzone">
       <div class="footer">
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-ffd1470f7531581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-f16e7e7d86bec92b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-bcfdd8377f19ec24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="footericon" @click="gohome()" src="https://upload-images.jianshu.io/upload_images/1409578-ffd1470f7531581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
+        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-f16e7e7d86bec92b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
+        <image class="footericon" @click="seeprofile()" src="https://upload-images.jianshu.io/upload_images/1409578-bcfdd8377f19ec24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+const stream = weex.requireModule('stream');
 export default {
   data() {
     return {
@@ -45,15 +46,38 @@ export default {
         senderId: 15331060,
         recieverId: 15331059,
         content: '你好，请问在吗？',
-        max: '2018-06-07T07:49:39.000Z',
+        time: '2018-06-07T07:49:39.000Z',
       }, {
         sessionId: 2,
         senderId: 15331078,
         recieverId: 15331059,
         content: '你好，请问在吗？请问《小王子》还在吗还在吗？',
-        max: '2018-06-07 07:49:39',
+        time: '2018-06-07T07:49:39.000Z',
       }],
     };
+  },
+  methods: {
+    /* 回主页 */
+    gohome() {
+      this.$router.push({ path: '/home' });
+    },
+    /* 个人信息 */
+    seeprofile() {
+      this.$router.push({ path: '/profile' });
+    },
+  },
+  created() {
+    stream.fetch({
+      method: 'GET',
+      url: 'http://123.207.86.98:3000/api/message/last',
+      type: 'json',
+      headers: { 'Content-Type': 'application/json' },
+    },
+    (rec) => {
+      if (rec.ok) {
+        this.boxes = rec.data;
+      }
+    });
   },
 };
 </script>

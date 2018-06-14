@@ -1,17 +1,18 @@
 <template>
   <div class="wrapped">
+    <router-view />
     <div class="topzone">
       <div class="searchzone">
-        <input type="text" placeholder=" 搜索" class="search" :autofocus=true value=""/>
-        <image class="searchicon" src="https://upload-images.jianshu.io/upload_images/1409578-fe71f0a49c9910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"/>
+        <input type="text" placeholder="搜索" class="search" :autofocus=true value=""/>
+        <image class="searchicon" src="https://upload-images.jianshu.io/upload_images/1409578-fe71f0a49c9910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"  @click="seebooklist()"/>
       </div>
       <div class="searchfunzone">
         <div class="searchfunfilter">
-          <image class="searchfuniconleft" src="https://upload-images.jianshu.io/upload_images/1409578-14476b94d3532fff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+          <image class="searchfuniconleft" src="https://wx2.sinaimg.cn/mw690/006f5TdVly1fs8ks5ndphj302o02o0qs.jpg"/>
           <text class="searchfuntext">筛选</text>
         </div>
         <div class="searchfunrsort">
-          <image class="searchfuniconright" src="https://upload-images.jianshu.io/upload_images/1409578-d79a13daa64a9508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+          <image class="searchfuniconright" src="https://wx4.sinaimg.cn/mw690/006f5TdVly1fs8kt42n1aj302o02o0sh.jpg"/>
           <text class="searchfuntext">价格排序</text>
         </div>
       </div>
@@ -19,7 +20,7 @@
     <div class="listzone">
       <list class="list">
       <cell class="cell" v-for="item in boxes" :key="item.bookId">
-        <image class="bookpicture" :src="item.bookpicture"/>
+        <image class="bookpicture" :src="item.img"/>
         <div class="textinfozone">
           <text class="bookname">书名：《{{item.name}}》 </text>
           <text class="describe" lines="2">描述：{{item.description}}</text>
@@ -34,22 +35,23 @@
     </div>
     <div class="footerzone">
       <div class="footer">
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-aa3c5917b4badbf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="footericon" src="https://wx4.sinaimg.cn/mw690/006f5TdVly1fs8ks094nxj302o02o3y9.jpg" />
+        <image class="footericon" @click="seemessage()" src="https://wx4.sinaimg.cn/mw690/006f5TdVly1fs8ktdde89j302o02oa9t.jpg" />
+        <image class="footericon" @click="seeprofile()" src="https://wx3.sinaimg.cn/mw690/006f5TdVly1fs8ksqm4kaj302o02ojr6.jpg" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+const stream = weex.requireModule('stream');
 export default {
   data() {
     return {
       boxes: [
         {
           bookId: 1,
-          bookpicture: [
+          img: [
             'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
           ],
           name: '小王子',
@@ -59,7 +61,7 @@ export default {
         },
         {
           bookId: 2,
-          bookpicture: [
+          img: [
             'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
           ],
           name: '小王子',
@@ -69,7 +71,7 @@ export default {
         },
         {
           bookId: 3,
-          bookpicture: [
+          img: [
             'https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240',
           ],
           name: '小王子',
@@ -79,6 +81,33 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    /* 筛选列表 */
+    seebooklist() {
+      this.$router.push({ path: '/list' });
+    },
+    /* 消息列表 */
+    seemessage() {
+      this.$router.push({ path: '/message' });
+    },
+    /* 个人信息 */
+    seeprofile() {
+      this.$router.push({ path: '/profile' });
+    },
+  },
+  created() {
+    stream.fetch({
+      method: 'GET',
+      url: 'http://123.207.86.98:3000/api/book',
+      type: 'json',
+      headers: { 'Content-Type': 'application/json' },
+    },
+    (rec) => {
+      if (rec.ok) {
+        this.boxes = rec.data;
+      }
+    });
   },
 };
 </script>
@@ -97,6 +126,8 @@ input::-webkit-input-placeholder {
 .wrapped {
   align-items: center;
   background: #eeeee0;
+  width: 100%;
+  height: 100%;
 }
 .topzone {
   background: white;
@@ -227,14 +258,14 @@ input::-webkit-input-placeholder {
   color: gray;
   font-size: 60px;
   color: #ff7f50;
-  width: 60%;
+  width: 45%;
 }
 .sellervia {
   width: 80px;
   height: 80px;
 }
 .sellername {
-  width: 19%;
+  width: 40%;
   color: gray;
   font-size: 38px;
 }
@@ -245,16 +276,17 @@ input::-webkit-input-placeholder {
   background: white;
   position: fixed;
   bottom: 0;
+  margin-bottom: 10px;
   width: 100%;
-  height: 9%;
+  height: 10%;
 }
 .footer {
-  margin-top: 10px;
+  margin: 10px 0 10px 0;
   flex-direction: row;
   justify-content: space-around;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 .footericon {
   height: 70px;

@@ -88,7 +88,6 @@ module.exports = {
               message: '登录成功',
               duration: 2.0,
             });
-            console.log(ret);
             this.$router.push({
               path: '/home',
               query: {

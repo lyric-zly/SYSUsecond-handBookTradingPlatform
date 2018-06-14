@@ -43,26 +43,31 @@
     </div>
     <div class="footerzone">
       <div class="footer">
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/1409578-aa3c5917b4badbf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="footericon" @click="gohome()" src="https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="footericon" @click="seemessage()" src="https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="footericon" @click="seeprofile()" src="https://upload-images.jianshu.io/upload_images/1409578-aa3c5917b4badbf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
       </div>
     </div>
   </div>
 </template>
 
-<script type="text/javascript">
-/*
-window.onload=function(){
-  var label = document.getElementsByClassName("label");
-  label.ontouchstart = function(){
-    this.style.backgroundColor="green";
-  }
-  label.ontouchend = function() {
-    this.style.backgroundColor = "white";
-  };
-}
-*/
+<script>
+export default {
+  methods: {
+    /* 回主页 */
+    gohome() {
+      this.$router.push({ path: '/home' });
+    },
+    /* 消息列表 */
+    seemessage() {
+      this.$router.push({ path: '/message' });
+    },
+    /* 个人信息 */
+    seeprofile() {
+      this.$router.push({ path: '/profile' });
+    },
+  },
+};
 </script>
 
 <style type="text/css">
