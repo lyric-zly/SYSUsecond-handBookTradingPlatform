@@ -48,10 +48,12 @@ let check = 0;
 let nicknameLogin = '';
 
 module.exports = {
-  data: {
-    userNumber: '',
-    userPassword: '',
-    hint: '',
+  data() {
+    return {
+      userNumber: '',
+      userPassword: '',
+      hint: '',
+    };
   },
   methods: {
     onchangeUserNumber(event) {
