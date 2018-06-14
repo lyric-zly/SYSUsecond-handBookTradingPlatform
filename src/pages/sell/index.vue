@@ -18,7 +18,7 @@
             value=""
             @change="onchangedes" />
         </div>
-        <form class="bookphotozone" id="form1">
+        <form class="bookphotozone" id="book-form">
           <text class="text"> 书目照片: </text>
           <input type="file" class="input" @change="onFileChange" id="file">
         </form>
@@ -72,21 +72,15 @@ export default {
       this.lists.push(event.value);
     },
     onFileChange() {
-      // const form = document.getElementById('form1');
-      // const fd = new FormData(form);
-      // $.ajax({
-      //   url: 'server.php',
-      //   type: 'POST',
-      //   data: fd,
-      //   processData: false,
-      //   contentType: false,
-      //   success() {
-      //     alert('upload succeeded');
-      //   },
-      //   error() {
-      //     alert('upload failed');
-      //   },
-      // });
+      const form = document.getElementById('book-form');
+      const fd = new FormData(form);
+      stream.fetch({
+        method: 'POST',
+        url: `http://123.207.86.98:3000/api/book/${this.id}/img`,
+        type: 'json',
+        body: fd,
+        headers: { 'Content-Type': 'multipart/form-data' },
+      });
     },
     goback() {},
     upload() {},

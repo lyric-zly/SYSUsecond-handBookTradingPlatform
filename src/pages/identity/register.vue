@@ -67,13 +67,15 @@
 const modal = weex.requireModule('modal');
 const stream = weex.requireModule('stream');
 
-module.exports = {
-  data: {
-    check: 0,
-    userNumber: '',
-    userID: '',
-    userPassword: '',
-    newuserPassword: '22222',
+export default {
+  data() {
+    return {
+      check: 0,
+      userNumber: '',
+      userID: '',
+      userPassword: '',
+      newuserPassword: '22222',
+    };
   },
   methods: {
     onchangeUserNumber(event) {

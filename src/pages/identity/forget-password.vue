@@ -60,12 +60,14 @@
   </div>
 </template>
 <script>
-module.exports = {
-  data: {
-    userNumber: '',
-    UserID: '',
-    userPassword: '',
-    newUserPassword: '',
+export default {
+  data() {
+    return {
+      userNumber: '',
+      UserID: '',
+      userPassword: '',
+      newUserPassword: '',
+    };
   },
   methods: {
     onchangeUserNumber(event) {
