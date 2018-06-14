@@ -76,7 +76,7 @@
 
 /* weex initialized here, please do not move this line */
 var router = __webpack_require__(1);
-var App = __webpack_require__(5);
+var App = __webpack_require__(54);
 /* eslint-disable no-new */
 new Vue(Vue.util.extend({ el: '#root', router: router }, App));
 router.push('/');
@@ -92,20 +92,105 @@ var _vueRouter = __webpack_require__(2);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _HelloWorld = __webpack_require__(3);
+var _index = __webpack_require__(3);
 
-var _HelloWorld2 = _interopRequireDefault(_HelloWorld);
+var _index2 = _interopRequireDefault(_index);
+
+var _login = __webpack_require__(7);
+
+var _login2 = _interopRequireDefault(_login);
+
+var _register = __webpack_require__(11);
+
+var _register2 = _interopRequireDefault(_register);
+
+var _forgetPassword = __webpack_require__(15);
+
+var _forgetPassword2 = _interopRequireDefault(_forgetPassword);
+
+var _index3 = __webpack_require__(19);
+
+var _index4 = _interopRequireDefault(_index3);
+
+var _index5 = __webpack_require__(24);
+
+var _index6 = _interopRequireDefault(_index5);
+
+var _index7 = __webpack_require__(29);
+
+var _index8 = _interopRequireDefault(_index7);
+
+var _index9 = __webpack_require__(34);
+
+var _index10 = _interopRequireDefault(_index9);
+
+var _index11 = __webpack_require__(38);
+
+var _index12 = _interopRequireDefault(_index11);
+
+var _index13 = __webpack_require__(42);
+
+var _index14 = _interopRequireDefault(_index13);
+
+var _index15 = __webpack_require__(46);
+
+var _index16 = _interopRequireDefault(_index15);
+
+var _index17 = __webpack_require__(50);
+
+var _index18 = _interopRequireDefault(_index17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* global Vue */
-Vue.use(_vueRouter2.default);
+Vue.use(_vueRouter2.default); /* global Vue */
+
 
 module.exports = new _vueRouter2.default({
   routes: [{
     path: '/',
-    name: 'HelloWorld',
-    component: _HelloWorld2.default
+    name: 'identity',
+    component: _index2.default,
+    children: [{
+      path: '/',
+      redirect: 'login'
+    }, {
+      path: '/login',
+      name: 'login',
+      component: _login2.default
+    }, {
+      path: '/register',
+      name: 'register',
+      component: _register2.default
+    }, {
+      path: '/forget-password',
+      name: 'forget-password',
+      component: _forgetPassword2.default
+    }]
+  }, {
+    path: '/sell',
+    component: _index16.default
+  }, {
+    path: '/goods/:type',
+    component: _index18.default
+  }, {
+    path: '/chat/:room',
+    component: _index14.default
+  }, {
+    path: '/book/:id',
+    component: _index12.default
+  }, {
+    path: '/home',
+    component: _index4.default,
+    children: [{
+      path: '/list',
+      component: _index6.default
+    }, {
+      path: '/message',
+      component: _index8.default
+    }, {
+      path: '/profile',
+      component: _index10.default
+    }]
   }]
 });
 
@@ -2577,8 +2662,15 @@ exports.default = VueRouter;
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
+/* styles */
+__vue_styles__.push(__webpack_require__(4)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(5)
+
 /* template */
-var __vue_template__ = __webpack_require__(4)
+var __vue_template__ = __webpack_require__(6)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2590,9 +2682,10 @@ __vue_options__ = __vue_exports__ = __vue_exports__.default
 if (typeof __vue_options__ === "function") {
   __vue_options__ = __vue_options__.options
 }
-__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/components/HelloWorld.vue"
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/identity/index.vue"
 __vue_options__.render = __vue_template__.render
 __vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-e6ea492c"
 __vue_options__.style = __vue_options__.style || {}
 __vue_styles__.forEach(function (module) {
   for (var name in module) {
@@ -2610,29 +2703,3728 @@ module.exports = __vue_exports__
 /* 4 */
 /***/ (function(module, exports) {
 
+module.exports = {
+  "identity": {
+    "backgroundPosition": "center center",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 100,
+    "height": 100,
+    "backgroundSize": "cover",
+    "backgroundImage": "url('https://wx3.sinaimg.cn/mw690/006tzQZEgy1frtl3g34dyj30u01hcgnk.jpg')"
+  }
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  data: function data() {
+    return {};
+  }
+};
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('text', {
-    staticClass: ["message"]
-  }, [_vm._v("Now, let's use Vue.js to build your Weex app.")])
+  return _c('div', {
+    staticClass: ["identity"]
+  }, [_c('router-view', {
+    staticClass: ["pos"]
+  })], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __vue_exports__, __vue_options__
 var __vue_styles__ = []
 
 /* styles */
-__vue_styles__.push(__webpack_require__(6)
+__vue_styles__.push(__webpack_require__(8)
 )
 
 /* script */
-__vue_exports__ = __webpack_require__(7)
+__vue_exports__ = __webpack_require__(9)
 
 /* template */
-var __vue_template__ = __webpack_require__(8)
+var __vue_template__ = __webpack_require__(10)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/identity/login.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-56327e81"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapper": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 100,
+    "height": 100,
+    "backgroundSize": "cover",
+    "backgroundImage": "url('https://wx3.sinaimg.cn/mw690/006tzQZEgy1frtl3g34dyj30u01hcgnk.jpg')"
+  },
+  "input-wrapper": {
+    "width": "550",
+    "marginLeft": "100",
+    "marginRight": "100",
+    "marginBottom": "30"
+  },
+  "input": {
+    "fontSize": "30",
+    "height": "80",
+    "width": "550",
+    "paddingLeft": "90",
+    "paddingTop": "15",
+    "paddingBottom": "15",
+    "borderWidth": "0",
+    "borderColor": "#ffffff",
+    "borderRadius": "10",
+    "outline": "none"
+  },
+  "input-img": {
+    "position": "absolute",
+    "top": "10",
+    "left": "15",
+    "width": "60",
+    "height": "60"
+  },
+  "logo": {
+    "flex": 1
+  },
+  "logo_picture": {
+    "width": "400",
+    "height": "400"
+  },
+  "input-login": {
+    "height": "80",
+    "width": "550",
+    "backgroundColor": "#48c9bf",
+    "borderRadius": "10",
+    "marginTop": "40"
+  },
+  "input-login-text": {
+    "height": "80",
+    "width": "550",
+    "textAlign": "center",
+    "lineHeight": "80",
+    "color": "#FFFFFF",
+    "fontSize": "35"
+  },
+  "input-forget": {
+    "position": "absolute",
+    "left": "30",
+    "fontSize": "30"
+  },
+  "input-register": {
+    "position": "absolute",
+    "right": "30",
+    "fontSize": "30"
+  },
+  "hint": {
+    "height": "80",
+    "width": "550",
+    "textAlign": "center",
+    "lineHeight": "80",
+    "color": "#FF0000",
+    "fontSize": "35"
+  }
+}
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var stream = weex.requireModule('stream');
+// const navigator = weex.requireModule('navigator');
+var modal = weex.requireModule('modal');
+
+module.exports = {
+  data: function data() {
+    return {
+      userNumber: '',
+      userPassword: '',
+      hint: ''
+    };
+  },
+
+  methods: {
+    /* 找回密码 */
+    findPassword: function findPassword() {
+      this.$router.push({ name: 'forget-password' });
+    },
+
+
+    /* 注册 */
+    register: function register() {
+      /* this.$router.go(-1); */
+      this.$router.push({ path: '/register' });
+    },
+
+    /* 处理登录 */
+
+    login: function login() {
+      stream.fetch({
+        method: 'POST',
+        url: 'http://123.207.86.98:3000/api/user/login',
+        type: 'json',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: this.userNumber,
+          password: this.userPassword
+        })
+      }, function (ret) {
+        if (!ret.ok) {
+          modal.toast({
+            message: '学号或密码错误',
+            duration: 2.0
+          });
+        } else {
+          modal.toast({
+            message: '登录成功',
+            duration: 2.0
+          });
+          console.log(ret);
+          // this.$router.push({
+          //   path: '/home',
+          //   query: {
+          //     username: ret.data.userNumber,
+          //     password: this.userPassword,
+          //     nickname: nicknameLogin,
+          //     flag: '3',
+          //   },
+          // });
+        }
+      }
+      // (response) => {},
+      );
+    }
+  }
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('image', {
+    staticClass: ["logo_picture"],
+    attrs: {
+      "resize": "contain",
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3gqkmmj30bi08egph.jpg"
+    }
+  }), _c('div', {
+    staticClass: ["login"]
+  }, [_c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入学号",
+      "utofocus": "true",
+      "value": "",
+      "value": (_vm.userNumber)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userNumber = $event.target.attr.value
+      }
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3f8fbuj302o02ojr6.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "password",
+      "placeholder": "请输入密码",
+      "value": "",
+      "value": (_vm.userPassword)
+    },
+    on: {
+      "input": function($event) {
+        _vm.userPassword = $event.target.attr.value
+      }
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx2.sinaimg.cn/mw690/006tzQZEgy1frtl3fk45cj302o02o0sh.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('div', {
+    staticClass: ["input-login"],
+    on: {
+      "click": function($event) {
+        _vm.login()
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["input-login-text"]
+  }, [_vm._v("登录")])])]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('text', {
+    staticClass: ["input-forget"],
+    on: {
+      "click": function($event) {
+        _vm.findPassword()
+      }
+    }
+  }, [_vm._v("找回密码")]), _c('text', {
+    staticClass: ["input-register"],
+    on: {
+      "click": function($event) {
+        _vm.register()
+      }
+    }
+  }, [_vm._v("立即注册")])])]), _c('div', {
+    staticClass: ["hintwrapper"]
+  }, [_c('text', {
+    staticClass: ["hint"]
+  }, [_vm._v(_vm._s(_vm.hint))])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(12)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(13)
+
+/* template */
+var __vue_template__ = __webpack_require__(14)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/identity/register.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-c73f028a"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapper": {
+    "backgroundPosition": "center center",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 100,
+    "height": 100,
+    "backgroundSize": "cover",
+    "backgroundImage": "url('https://wx3.sinaimg.cn/mw690/006tzQZEgy1frtl3g34dyj30u01hcgnk.jpg')"
+  },
+  "input-wrapper": {
+    "width": "550",
+    "marginLeft": "100",
+    "marginRight": "100",
+    "marginBottom": "30"
+  },
+  "input": {
+    "fontSize": "30",
+    "height": "80",
+    "width": "550",
+    "paddingLeft": "90",
+    "paddingTop": "15",
+    "paddingBottom": "15",
+    "borderWidth": "0",
+    "borderColor": "#ffffff",
+    "borderRadius": "10",
+    "outline": "none"
+  },
+  "input-img": {
+    "position": "absolute",
+    "top": "10",
+    "left": "15",
+    "width": "60",
+    "height": "60"
+  },
+  "logo": {
+    "flex": 1
+  },
+  "logo_picture": {
+    "width": "400",
+    "height": "400"
+  },
+  "register-wrapper": {
+    "height": "80",
+    "width": "550",
+    "backgroundColor": "#48c9bf",
+    "borderRadius": "10",
+    "marginTop": "40"
+  },
+  "input-login-text": {
+    "height": "80",
+    "width": "550",
+    "textAlign": "center",
+    "lineHeight": "80",
+    "color": "#FFFFFF",
+    "fontSize": "35"
+  },
+  "return-login": {
+    "position": "absolute",
+    "left": "30",
+    "fontSize": "30"
+  },
+  "hang-out": {
+    "position": "absolute",
+    "right": "30",
+    "fontSize": "30"
+  },
+  "hint": {
+    "height": "80",
+    "width": "550",
+    "textAlign": "center",
+    "lineHeight": "80",
+    "color": "#FF0000",
+    "fontSize": "35"
+  }
+}
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+
+exports.default = {
+  data: function data() {
+    return {
+      check: 0,
+      userNumber: '',
+      userID: '',
+      userPassword: '',
+      newuserPassword: '22222'
+    };
+  },
+
+  methods: {
+    onchangeUserNumber: function onchangeUserNumber(event) {
+      this.userNumber = event.value;
+    },
+    onchangeUserPassword: function onchangeUserPassword(event) {
+      this.userPassword = event.value;
+    },
+    onchangeUserID: function onchangeUserID(event) {
+      this.userID = event.value;
+    },
+    onchangeNewUserPassword: function onchangeNewUserPassword(event) {
+      this.newuserPassword = event.value;
+    },
+
+    /* 找回密码 */
+    findPassword: function findPassword() {},
+
+    /* 注册 */
+    register: function register() {
+      var _this = this;
+
+      if (this.userPassword !== this.newuserPassword) {
+        modal.toast({
+          message: '前后密码不一致',
+          duration: 2.0
+        });
+      } else if (this.userNumber.length !== 8) {
+        modal.toast({
+          message: '学号必须为8位',
+          duration: 2.0
+        });
+      } else if (this.userPassword.length < 8 || this.userPassword.length > 16) {
+        modal.toast({
+          message: '密码必须为8-16位',
+          duration: 2.0
+        });
+      } else {
+        stream.fetch({
+          method: 'POST',
+          url: 'http://123.207.86.98:3000/api/user/register',
+          type: 'json',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nickname: this.userID,
+            username: this.userNumber,
+            password: this.userPassword
+          })
+        }, function (ret) {
+          if (!ret.ok) {
+            modal.toast({
+              message: '该用户已经注册',
+              duration: 2.0
+            });
+            _this.check = 0;
+          } else {
+            modal.toast({
+              message: '注册成功',
+              duration: 2.0
+            });
+            _this.check = 1;
+          }
+        }
+        // (response) => {},
+        );
+      }
+    },
+    returnlogin: function returnlogin() {
+      this.$router.go(-1);
+    },
+    hangout: function hangout() {
+      /* this.$router.push({name: 'home'}); */
+      this.$router.push({
+        path: '/home',
+        query: {
+          username: 0,
+          password: '0',
+          nickname: 'visitor',
+          flag: '3'
+        }
+      });
+    }
+  }
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('image', {
+    staticClass: ["logo_picture"],
+    attrs: {
+      "resize": "contain",
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3gqkmmj30bi08egph.jpg"
+    }
+  }), _c('div', {
+    staticClass: ["login"]
+  }, [_c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入学号(必须为8位)",
+      "autofocus": "true",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeUserNumber
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3f8fbuj302o02ojr6.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入昵称",
+      "autofocus": "true",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeUserID
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3f8fbuj302o02ojr6.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "password",
+      "placeholder": "请输入新密码",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeUserPassword
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx2.sinaimg.cn/mw690/006tzQZEgy1frtl3fk45cj302o02o0sh.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "password",
+      "placeholder": "请再次输入新密码",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeNewUserPassword
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx2.sinaimg.cn/mw690/006tzQZEgy1frtl3fk45cj302o02o0sh.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('div', {
+    staticClass: ["register-wrapper"],
+    on: {
+      "click": function($event) {
+        _vm.register()
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["input-login-text"]
+  }, [_vm._v("注册")])])]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('text', {
+    staticClass: ["return-login"],
+    on: {
+      "click": function($event) {
+        _vm.returnlogin()
+      }
+    }
+  }, [_vm._v("返回登录")]), _c('text', {
+    staticClass: ["hang-out"],
+    on: {
+      "click": function($event) {
+        _vm.hangout()
+      }
+    }
+  }, [_vm._v("随便逛逛")])])]), _c('div', {
+    staticClass: ["hintwrapper"]
+  }, [_c('text', {
+    staticClass: ["hint"]
+  }, [_vm._v(_vm._s(_vm.hint))])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(16)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(17)
+
+/* template */
+var __vue_template__ = __webpack_require__(18)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/identity/forget-password.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-a210a6da"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapper": {
+    "backgroundPosition": "center center",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 100,
+    "height": 100,
+    "backgroundSize": "cover",
+    "backgroundImage": "url('https://wx3.sinaimg.cn/mw690/006tzQZEgy1frtl3g34dyj30u01hcgnk.jpg')"
+  },
+  "input-wrapper": {
+    "width": "550",
+    "marginLeft": "100",
+    "marginRight": "100",
+    "marginBottom": "30"
+  },
+  "input": {
+    "fontSize": "30",
+    "height": "80",
+    "width": "550",
+    "paddingLeft": "90",
+    "paddingTop": "15",
+    "paddingBottom": "15",
+    "borderWidth": "0",
+    "borderColor": "#ffffff",
+    "borderRadius": "10",
+    "outline": "none"
+  },
+  "input-img": {
+    "position": "absolute",
+    "top": "10",
+    "left": "15",
+    "width": "60",
+    "height": "60"
+  },
+  "logo": {
+    "flex": 1
+  },
+  "logo_picture": {
+    "width": "400",
+    "height": "400"
+  },
+  "forgetpassword": {
+    "height": "80",
+    "width": "550",
+    "backgroundColor": "#48c9bf",
+    "borderRadius": "10",
+    "marginTop": "40"
+  },
+  "input-login-text": {
+    "height": "80",
+    "width": "550",
+    "textAlign": "center",
+    "lineHeight": "80",
+    "color": "#FFFFFF",
+    "fontSize": "35"
+  },
+  "return-login": {
+    "position": "absolute",
+    "left": "30",
+    "fontSize": "30"
+  },
+  "hang-out": {
+    "position": "absolute",
+    "right": "30",
+    "fontSize": "30"
+  },
+  "hint": {
+    "height": "80",
+    "width": "550",
+    "textAlign": "center",
+    "lineHeight": "80",
+    "color": "#FF0000",
+    "fontSize": "35"
+  }
+}
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  data: function data() {
+    return {
+      userNumber: '',
+      UserID: '',
+      userPassword: '',
+      newUserPassword: ''
+    };
+  },
+
+  methods: {
+    onchangeUserNumber: function onchangeUserNumber(event) {
+      this.userNumber = event.value;
+    },
+    onchangeUserPassword: function onchangeUserPassword(event) {
+      this.userPassword = event.value;
+    },
+    onchangeUserID: function onchangeUserID(event) {
+      this.userID = event.value;
+    },
+    onchangeNewUserPassword: function onchangeNewUserPassword(event) {
+      this.newUserPassword = event.value;
+    },
+
+    /* 找回密码 */
+
+    findPassword: function findPassword() {
+      /* this.$router.go(-1); */
+      /* this.$router.push('ForgetPassword'); */
+    },
+    forgetpassword: function forgetpassword() {
+      this.$router.go(-1);
+    },
+    returnlogin: function returnlogin() {
+      this.$router.go(-1);
+    },
+    hangout: function hangout() {
+      this.$router.push({
+        path: '/home',
+        query: { username: 0, password: '0', nickname: 'visitor', flag: '3' }
+      });
+    }
+  }
+};
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('image', {
+    staticClass: ["logo_picture"],
+    attrs: {
+      "resize": "contain",
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3gqkmmj30bi08egph.jpg"
+    }
+  }), _c('div', {
+    staticClass: ["login"]
+  }, [_c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输入学号",
+      "autofocus": "true",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeUserNumber
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3f8fbuj302o02ojr6.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "placeholder": "请输身份证证后六位",
+      "autofocus": "true",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeUserID
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3f8fbuj302o02ojr6.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "password",
+      "placeholder": "请输入新密码",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeUserPassword
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx2.sinaimg.cn/mw690/006tzQZEgy1frtl3fk45cj302o02o0sh.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "password",
+      "placeholder": "请再次输入新密码",
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeNewUserPassword
+    }
+  }), _c('image', {
+    staticClass: ["input-img"],
+    attrs: {
+      "src": "https://wx2.sinaimg.cn/mw690/006tzQZEgy1frtl3fk45cj302o02o0sh.jpg"
+    }
+  })]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('div', {
+    staticClass: ["forgetpassword"],
+    on: {
+      "click": function($event) {
+        _vm.forgetpassword()
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["input-login-text"]
+  }, [_vm._v("重置密码")])])]), _c('div', {
+    staticClass: ["input-wrapper"]
+  }, [_c('text', {
+    staticClass: ["return-login"],
+    on: {
+      "click": function($event) {
+        _vm.returnlogin()
+      }
+    }
+  }, [_vm._v("返回登录")]), _c('text', {
+    staticClass: ["hang-out"],
+    on: {
+      "click": function($event) {
+        _vm.hangout()
+      }
+    }
+  }, [_vm._v("随便逛逛")])])]), _c('div', {
+    staticClass: ["hintwrapper"]
+  }, [_c('text', {
+    staticClass: ["hint"]
+  }, [_vm._v(_vm._s(_vm.hint))])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(20)
+)
+__vue_styles__.push(__webpack_require__(21)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(22)
+
+/* template */
+var __vue_template__ = __webpack_require__(23)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/home/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-62aaca6a"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapped": {
+    "alignItems": "center",
+    "background": "#eeeee0"
+  },
+  "topzone": {
+    "background": "white",
+    "flexDirection": "column",
+    "alignItems": "center",
+    "width": 100
+  },
+  "searchzone": {
+    "marginTop": "10",
+    "borderRadius": "40",
+    "background": "#eeeee0",
+    "justifyContent": "center",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "height": "75",
+    "width": 90
+  },
+  "search": {
+    "borderRadius": "40",
+    "outline": "none",
+    "background": "rgba(255, 255, 255, 0.1)",
+    "justifyContent": "center",
+    "fontSize": "45",
+    "height": "80",
+    "width": 80
+  },
+  "searchicon": {
+    "width": "60",
+    "height": "60"
+  },
+  "searchfunzone": {
+    "marginTop": "20",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "width": 90,
+    "height": "70"
+  },
+  "searchfunfilter": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "width": 50,
+    "height": "60",
+    "borderRight": "1px solid"
+  },
+  "searchfunrsort": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 50,
+    "height": "60"
+  },
+  "searchfuniconleft": {
+    "height": "60",
+    "width": "60"
+  },
+  "searchfuniconright": {
+    "height": "80",
+    "width": "80"
+  },
+  "searchfuntext": {
+    "fontSize": "40",
+    "color": "#00caca"
+  },
+  "listzone": {
+    "position": "absolute",
+    "top": "180",
+    "width": 100
+  },
+  "list": {
+    "position": "relative",
+    "flexDirection": "column",
+    "alignItems": "center",
+    "width": 100
+  },
+  "cell": {
+    "marginTop": "10",
+    "marginRight": "20",
+    "marginBottom": "10",
+    "marginLeft": "20",
+    "paddingLeft": "20",
+    "background": "white",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "borderRadius": "40",
+    "width": 95,
+    "height": "300",
+    "boxShadow": "0 15px 30px rgba(0, 0, 0, 0.2)"
+  },
+  "bookpicture": {
+    "width": "200",
+    "height": "280"
+  },
+  "textinfozone": {
+    "marginRight": "10",
+    "width": 70,
+    "height": 90,
+    "flexDirection": "column",
+    "justifyContent": "space-between"
+  },
+  "bookname": {
+    "color": "#808080",
+    "fontSize": "36",
+    "fontWeight": "bold"
+  },
+  "describe": {
+    "lines": 2,
+    "color": "#808080",
+    "fontSize": "36",
+    "fontWeight": "bold"
+  },
+  "priceandseller": {
+    "marginTop": "10",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "alignItems": "center",
+    "height": "100"
+  },
+  "price": {
+    "color": "#ff7f50",
+    "fontSize": "60",
+    "width": 60
+  },
+  "sellervia": {
+    "width": "80",
+    "height": "80"
+  },
+  "sellername": {
+    "width": 19,
+    "color": "#808080",
+    "fontSize": "38"
+  },
+  "footerzone": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "background": "white",
+    "position": "fixed",
+    "bottom": 0,
+    "width": 100,
+    "height": 9
+  },
+  "footer": {
+    "marginTop": "10",
+    "flexDirection": "row",
+    "justifyContent": "space-around",
+    "position": "absolute",
+    "width": 100,
+    "height": 100
+  },
+  "footericon": {
+    "height": "70",
+    "width": "70"
+  }
+}
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  data: function data() {
+    return {
+      boxes: [{
+        bookId: 1,
+        bookpicture: ['https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'],
+        name: '小王子',
+        description: '可刀可刀，可刀可刀。超级好看超级好看。超级好看超级好看',
+        price: 18,
+        publisherId: '妮娜'
+      }, {
+        bookId: 2,
+        bookpicture: ['https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'],
+        name: '小王子',
+        description: '可刀可刀，可刀可刀。超级好看超级好看。超级好看超级好看',
+        price: 18,
+        publisherId: '妮娜'
+      }, {
+        bookId: 3,
+        bookpicture: ['https://upload-images.jianshu.io/upload_images/1409578-2c55950226fc3761.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'],
+        name: '小王子',
+        description: '可刀可刀，可刀可刀。超级好看超级好看。超级好看超级好看',
+        price: 18,
+        publisherId: '妮娜'
+      }]
+    };
+  }
+};
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapped"]
+  }, [_c('div', {
+    staticClass: ["topzone"]
+  }, [_c('div', {
+    staticClass: ["searchzone"]
+  }, [_c('input', {
+    staticClass: ["search"],
+    attrs: {
+      "type": "text",
+      "placeholder": " 搜索",
+      "autofocus": true,
+      "value": ""
+    }
+  }), _c('image', {
+    staticClass: ["searchicon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-fe71f0a49c9910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  })]), _vm._m(0)]), _c('div', {
+    staticClass: ["listzone"]
+  }, [_c('list', {
+    staticClass: ["list"]
+  }, _vm._l((_vm.boxes), function(item) {
+    return _c('cell', {
+      key: item.bookId,
+      staticClass: ["cell"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('image', {
+      staticClass: ["bookpicture"],
+      attrs: {
+        "src": item.bookpicture
+      }
+    }), _c('div', {
+      staticClass: ["textinfozone"]
+    }, [_c('text', {
+      staticClass: ["bookname"]
+    }, [_vm._v("书名：《" + _vm._s(item.name) + "》 ")]), _c('text', {
+      staticClass: ["describe"],
+      attrs: {
+        "lines": "2"
+      }
+    }, [_vm._v("描述：" + _vm._s(item.description))]), _c('div', {
+      staticClass: ["priceandseller"]
+    }, [_c('text', {
+      staticClass: ["price"]
+    }, [_vm._v("￥ " + _vm._s(item.price))]), _c('image', {
+      staticClass: ["sellervia"],
+      attrs: {
+        "src": "https://upload-images.jianshu.io/upload_images/1409578-ccda36498de1ec07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+      }
+    }), _c('text', {
+      staticClass: ["sellername"]
+    }, [_vm._v(_vm._s(item.publisherId))])])])])
+  }))]), _vm._m(1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["searchfunzone"]
+  }, [_c('div', {
+    staticClass: ["searchfunfilter"]
+  }, [_c('image', {
+    staticClass: ["searchfuniconleft"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-14476b94d3532fff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('text', {
+    staticClass: ["searchfuntext"]
+  }, [_vm._v("筛选")])]), _c('div', {
+    staticClass: ["searchfunrsort"]
+  }, [_c('image', {
+    staticClass: ["searchfuniconright"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-d79a13daa64a9508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('text', {
+    staticClass: ["searchfuntext"]
+  }, [_vm._v("价格排序")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["footerzone"]
+  }, [_c('div', {
+    staticClass: ["footer"]
+  }, [_c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-aa3c5917b4badbf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(25)
+)
+__vue_styles__.push(__webpack_require__(26)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(27)
+
+/* template */
+var __vue_template__ = __webpack_require__(28)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/home/book-list/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-23c040be"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapped": {
+    "alignItems": "center"
+  },
+  "searchzone": {
+    "marginTop": "10",
+    "borderRadius": "40",
+    "background": "#e0e0e0",
+    "justifyContent": "center",
+    "flexDirection": "row",
+    "alignItems": "center",
+    "height": "75",
+    "width": 90
+  },
+  "search": {
+    "borderRadius": "40",
+    "outline": "none",
+    "background": "rgba(255, 255, 255, 0.1)",
+    "justifyContent": "center",
+    "fontSize": "45",
+    "height": "80",
+    "width": 80
+  },
+  "searchicon": {
+    "width": "60",
+    "height": "60"
+  },
+  "searchfunzone": {
+    "marginTop": "20",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "width": 90,
+    "height": "70"
+  },
+  "searchfunfilter": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "width": 50,
+    "height": "60",
+    "borderRight": "1px solid"
+  },
+  "searchfunrsort": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 50,
+    "height": "60"
+  },
+  "searchfuniconleft": {
+    "height": "60",
+    "width": "60"
+  },
+  "searchfuniconright": {
+    "height": "80",
+    "width": "80"
+  },
+  "searchfuntext": {
+    "fontSize": "40",
+    "color": "#00caca"
+  },
+  "main": {
+    "width": 90
+  },
+  "labeltitle": {
+    "fontSize": "40",
+    "color": "#c0c0c0",
+    "borderBottom": "3px solid"
+  },
+  "labelzone": {
+    "flexWrap": "wrap",
+    "flexDirection": "row",
+    "height": "250",
+    "width": 100
+  },
+  "label": {
+    "marginRight": "15",
+    "marginTop": "10",
+    "height": "60",
+    "fontSize": "45",
+    "color": "#c0c0c0",
+    "border": "2px solid"
+  },
+  "footerzone": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "position": "absolute",
+    "bottom": 0,
+    "width": 100,
+    "height": 10,
+    "borderTop": "3px solid",
+    "color": "#e0e0e0"
+  },
+  "footer": {
+    "marginTop": "10",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "position": "absolute",
+    "width": "600",
+    "height": "120"
+  },
+  "footericon": {
+    "height": "96",
+    "width": "96"
+  }
+}
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/*
+window.onload=function(){
+  var label = document.getElementsByClassName("label");
+  label.ontouchstart = function(){
+    this.style.backgroundColor="green";
+  }
+  label.ontouchend = function() {
+    this.style.backgroundColor = "white";
+  };
+}
+*/
+
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapped"]
+  }, [_c('div', {
+    staticClass: ["searchzone"]
+  }, [_c('input', {
+    staticClass: ["search"],
+    attrs: {
+      "type": "text",
+      "placeholder": " 搜索",
+      "autofocus": true,
+      "value": ""
+    }
+  }), _c('image', {
+    staticClass: ["searchicon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-fe71f0a49c9910b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  })]), _vm._m(0), _vm._m(1), _vm._m(2), _vm._m(3), _vm._m(4)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["searchfunzone"]
+  }, [_c('div', {
+    staticClass: ["searchfunfilter"]
+  }, [_c('image', {
+    staticClass: ["searchfuniconleft"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-14476b94d3532fff.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('text', {
+    staticClass: ["searchfuntext"]
+  }, [_vm._v("筛选")])]), _c('div', {
+    staticClass: ["searchfunrsort"]
+  }, [_c('image', {
+    staticClass: ["searchfuniconright"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-d79a13daa64a9508.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('text', {
+    staticClass: ["searchfuntext"]
+  }, [_vm._v("价格排序")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["main"]
+  }, [_c('text', {
+    staticClass: ["labeltitle"]
+  }, [_vm._v("品类：")]), _c('div', {
+    staticClass: ["labelzone"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 课本 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 资料书 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 考研书 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 课外书 ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["main"]
+  }, [_c('text', {
+    staticClass: ["labeltitle"]
+  }, [_vm._v("地点：")]), _c('div', {
+    staticClass: ["labelzone"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 东校区 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 南校区 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 北校区 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 珠海校区 ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["main"]
+  }, [_c('text', {
+    staticClass: ["labeltitle"]
+  }, [_vm._v("学院：")]), _c('div', {
+    staticClass: ["labelzone"]
+  }, [_c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 法学院 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 数据科学与计算机学院 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 传播与设计学院 ")]), _c('text', {
+    staticClass: ["label"]
+  }, [_vm._v(" 医学院 ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["footerzone"]
+  }, [_c('div', {
+    staticClass: ["footer"]
+  }, [_c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-aa3c5917b4badbf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(30)
+)
+__vue_styles__.push(__webpack_require__(31)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(32)
+
+/* template */
+var __vue_template__ = __webpack_require__(33)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/home/message/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-1e8851c3"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapped": {
+    "alignItems": "center"
+  },
+  "messagetype": {
+    "paddingTop": "20",
+    "paddingBottom": "10",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "width": 100,
+    "height": 9,
+    "borderBottom": "2px gray solid"
+  },
+  "chatzone": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 50,
+    "height": 85,
+    "borderRight": "1px gray solid"
+  },
+  "chaticon": {
+    "height": "60",
+    "width": "60"
+  },
+  "chosedtext": {
+    "fontSize": "40",
+    "color": "#00CACA"
+  },
+  "securedzone": {
+    "flexDirection": "row",
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": 50,
+    "height": 85
+  },
+  "securedicon": {
+    "height": "70",
+    "width": "70"
+  },
+  "unchosedtext": {
+    "fontSize": "40",
+    "color": "#C0C0C0"
+  },
+  "chatlist": {
+    "width": 100,
+    "height": 50
+  },
+  "list": {
+    "flexDirection": "column",
+    "width": 100
+  },
+  "cell": {
+    "paddingTop": "20",
+    "paddingBottom": "5",
+    "flexDirection": "row",
+    "justifyContent": "flex-start",
+    "width": 100,
+    "height": "150",
+    "borderBottom": "1px gray solid"
+  },
+  "chatvirzone": {
+    "width": "120",
+    "height": 90
+  },
+  "sellervir": {
+    "height": "120",
+    "width": "120"
+  },
+  "chattextzone": {
+    "flexDirection": "column",
+    "justifyContent": "center",
+    "width": 83,
+    "height": 100
+  },
+  "chatnametime": {
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "width": 100
+  },
+  "sellernametext": {
+    "fontSize": "35",
+    "fontWeight": "bold"
+  },
+  "posttimetext": {
+    "color": "#808080"
+  },
+  "chatdetailtext": {
+    "color": "#808080",
+    "fontSize": "30",
+    "textOverflow": "ellipsis",
+    "overflow": "hidden",
+    "whiteSpace": "nowrap",
+    "width": 92
+  },
+  "footerzone": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "position": "fixed",
+    "bottom": 0,
+    "width": 100,
+    "height": 9,
+    "borderTop": "2px gray solid"
+  },
+  "footer": {
+    "flexDirection": "row",
+    "alignItems": "center",
+    "justifyContent": "space-around",
+    "position": "absolute",
+    "width": 100,
+    "height": 100
+  },
+  "footericon": {
+    "height": "70",
+    "width": "70"
+  }
+}
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+exports.default = {
+  data: function data() {
+    return {
+      boxes: [{
+        sessionId: 1,
+        senderId: 15331060,
+        recieverId: 15331059,
+        content: '你好，请问在吗？',
+        max: '2018-06-07T07:49:39.000Z'
+      }, {
+        sessionId: 2,
+        senderId: 15331078,
+        recieverId: 15331059,
+        content: '你好，请问在吗？请问《小王子》还在吗还在吗？',
+        max: '2018-06-07 07:49:39'
+      }]
+    };
+  }
+};
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapped"]
+  }, [_vm._m(0), _c('div', {
+    staticClass: ["chatlist"]
+  }, [_c('list', {
+    staticClass: ["list"]
+  }, _vm._l((_vm.boxes), function(item) {
+    return _c('cell', {
+      key: item.sessionId,
+      staticClass: ["cell"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('image', {
+      staticClass: ["sellervir"],
+      attrs: {
+        "src": "https://upload-images.jianshu.io/upload_images/1409578-e846c3ea7c900734.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+      }
+    }), _c('div', {
+      staticClass: ["chattextzone"]
+    }, [_c('div', {
+      staticClass: ["chatnametime"]
+    }, [_c('text', {
+      staticClass: ["sellernametext"]
+    }, [_vm._v(_vm._s(item.senderId) + " ")]), _c('text', {
+      staticClass: ["posttimetext"]
+    }, [_vm._v(_vm._s(item.max))])]), _c('div', {
+      staticClass: ["chatdetail"]
+    }, [_c('text', {
+      staticClass: ["chatdetailtext"]
+    }, [_vm._v(_vm._s(item.content))])])])])
+  }))]), _vm._m(1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["messagetype"]
+  }, [_c('div', {
+    staticClass: ["chatzone"]
+  }, [_c('image', {
+    staticClass: ["chaticon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-6cf9b27bb569f9fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('text', {
+    staticClass: ["chosedtext"]
+  }, [_vm._v(" 对话 ")])]), _c('div', {
+    staticClass: ["securedzone"]
+  }, [_c('image', {
+    staticClass: ["securedicon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-e71f1d77aebc583d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('text', {
+    staticClass: ["unchosedtext"]
+  }, [_vm._v(" 通知 ")])])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["footerzone"]
+  }, [_c('div', {
+    staticClass: ["footer"]
+  }, [_c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-ffd1470f7531581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-f16e7e7d86bec92b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  }), _c('image', {
+    staticClass: ["footericon"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/1409578-bcfdd8377f19ec24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
+    }
+  })])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(35)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(36)
+
+/* template */
+var __vue_template__ = __webpack_require__(37)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/home/profile/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3fcdb8e5"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "container": {
+    "backgroundColor": "#F6F6F6"
+  },
+  "avatar-container": {
+    "top": "-180",
+    "flexDirection": "row",
+    "justifyContent": "center"
+  },
+  "userinfo-avatar": {
+    "width": "200",
+    "height": "200",
+    "borderRadius": 50,
+    "alignItems": "center"
+  },
+  "userinfo": {
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": 5,
+    "top": "150",
+    "marginLeft": "20",
+    "marginRight": "20"
+  },
+  "text-h1": {
+    "marginLeft": "30",
+    "marginBottom": "10"
+  },
+  "text-h2": {
+    "marginLeft": "30",
+    "marginBottom": "30"
+  },
+  "text-h3": {
+    "marginTop": "30",
+    "marginRight": "30",
+    "marginBottom": "30",
+    "marginLeft": "30"
+  },
+  "text-h4": {
+    "fontSize": "26",
+    "color": "#7F7F7F"
+  },
+  "text-h5": {
+    "marginLeft": "30",
+    "marginBottom": "10",
+    "marginTop": "50"
+  },
+  "cells": {
+    "backgroundColor": "#FFFFFF",
+    "borderRadius": 5,
+    "marginLeft": "20",
+    "marginRight": "20",
+    "marginBottom": "20",
+    "flexDirection": "row",
+    "justifyContent": "space-between"
+  },
+  "head": {
+    "flexDirection": "row"
+  },
+  "block": {
+    "justifyContent": "center"
+  },
+  "line": {
+    "width": "0.5",
+    "backgroundColor": "#585858",
+    "height": "140",
+    "marginTop": "20",
+    "marginRight": "20",
+    "marginBottom": "20",
+    "marginLeft": "20"
+  },
+  "item": {
+    "marginBottom": "30",
+    "marginTop": "30",
+    "marginLeft": "30",
+    "marginRight": "40",
+    "alignItems": "center"
+  }
+}
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var stream = weex.requireModule('stream');
+var modal = weex.requireModule('modal');
+exports.default = {
+  data: function data() {
+    return {
+      studentID: '111',
+      nickname: '222',
+      college: '数据科学与计算机学院'
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    var USER_URL = 'http://123.207.86.98:3000/api/user/login';
+    stream.fetch({
+      method: 'GET',
+      url: USER_URL,
+      type: 'json'
+    }, function (ret) {
+      if (!ret.ok) {
+        var msg = '尚未登录';
+        modal.toast({
+          message: msg,
+          duration: 3.0
+        });
+      } else {
+        _this.studentID = ret.data.studentID;
+        _this.nickname = ret.data.nickname;
+      }
+    });
+  },
+
+  methods: {
+    goTo: function goTo() {
+      // this.$router
+      // this.$router.push({ path: '/goods' });
+    },
+    wantsell: function wantsell() {},
+    logout: function logout() {}
+  }
+};
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["container"]
+  }, [_c('div', [_c('div', {
+    staticClass: ["userinfo"]
+  }, [_c('text', {
+    staticClass: ["text-h5"]
+  }, [_vm._v("姓名： " + _vm._s(_vm.nickname))]), _c('text', {
+    staticClass: ["text-h1"]
+  }, [_vm._v("学号： " + _vm._s(_vm.studentID))]), _c('text', {
+    staticClass: ["text-h2"]
+  }, [_vm._v("学院： " + _vm._s(_vm.college))])]), _vm._m(0)]), _c('div', {
+    staticClass: ["cells"],
+    on: {
+      "click": _vm.wantsell
+    }
+  }, [_c('text', {
+    staticClass: ["text-h3"]
+  }, [_vm._v("我要卖书")]), _c('text', {
+    staticClass: ["text-h3"]
+  }, [_vm._v(">")])]), _c('div', {
+    staticClass: ["cells"]
+  }, [_vm._m(1), _c('div', {
+    staticClass: ["item"],
+    on: {
+      "click": _vm.goTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "96px",
+      height: "96px"
+    },
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-4ffaac6d7e7974f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  }), _c('text', {
+    staticClass: ["text-h4"]
+  }, [_vm._v("等待收货")])]), _c('div', {
+    staticClass: ["item"],
+    on: {
+      "click": _vm.goTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "96px",
+      height: "96px"
+    },
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-9b967727a94b81ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  }), _c('text', {
+    staticClass: ["text-h4"]
+  }, [_vm._v("已买入")])])]), _c('div', {
+    staticClass: ["cells"]
+  }, [_vm._m(2), _c('div', {
+    staticClass: ["item"],
+    on: {
+      "click": _vm.goTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "96px",
+      height: "96px"
+    },
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-254508d4005ef76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  }), _c('text', {
+    staticClass: ["text-h4"]
+  }, [_vm._v("正在出售")])]), _c('div', {
+    staticClass: ["item"],
+    on: {
+      "click": _vm.goTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "96px",
+      height: "96px"
+    },
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-b36db1a96ee2edae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  }), _c('text', {
+    staticClass: ["text-h4"]
+  }, [_vm._v("等待确认")])]), _c('div', {
+    staticClass: ["item"],
+    on: {
+      "click": _vm.goTo
+    }
+  }, [_c('image', {
+    staticStyle: {
+      width: "96px",
+      height: "96px"
+    },
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-7f2b966fd2463e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"
+    }
+  }), _c('text', {
+    staticClass: ["text-h4"]
+  }, [_vm._v("已卖出")])])]), _c('div', {
+    staticClass: ["cells"],
+    on: {
+      "click": _vm.logout
+    }
+  }, [_c('text', {
+    staticClass: ["text-h3"]
+  }, [_vm._v("退出当前帐号")]), _c('text', {
+    staticClass: ["text-h3"]
+  }, [_vm._v(">")])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["avatar-container"]
+  }, [_c('image', {
+    staticClass: ["userinfo-avatar"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-6b048ad0d9bd34aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700",
+      "resize": "cover"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["head"]
+  }, [_c('div', {
+    staticClass: ["block"]
+  }, [_c('text', {
+    staticClass: ["text-h3"]
+  }, [_vm._v("我是买家")])]), _c('div', {
+    staticClass: ["line"]
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["head"]
+  }, [_c('div', {
+    staticClass: ["block"]
+  }, [_c('text', {
+    staticClass: ["text-h3"]
+  }, [_vm._v("我是买家")])]), _c('div', {
+    staticClass: ["line"]
+  })])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(39)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(40)
+
+/* template */
+var __vue_template__ = __webpack_require__(41)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/book/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-10375c55"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapper": {
+    "alignItems": "center"
+  },
+  "back": {
+    "display": "flex",
+    "height": "50",
+    "width": "700"
+  },
+  "second": {
+    "display": "flex",
+    "flexDirection": "row",
+    "justifyContent": "space-between",
+    "width": "550",
+    "height": "66"
+  },
+  "userinfo": {
+    "display": "flex",
+    "flexDirection": "row",
+    "justifyContent": "flex-end",
+    "width": "300",
+    "height": "66"
+  },
+  "image": {
+    "width": "300",
+    "height": "450"
+  },
+  "price": {
+    "fontSize": "66",
+    "color": "rgb(255,0,0)"
+  },
+  "icon": {
+    "flex": 1,
+    "width": 60,
+    "height": 60
+  },
+  "username": {
+    "flex": 1,
+    "fontSize": "40",
+    "color": "#6c6c6c"
+  },
+  "bookname": {
+    "width": "600",
+    "height": "60"
+  },
+  "description": {
+    "width": "600",
+    "height": "250"
+  },
+  "labelzone": {
+    "display": "flex",
+    "flexDirection": "row",
+    "alignItem": "center",
+    "flexWrap": "wrap",
+    "width": "600"
+  },
+  "labels": {
+    "display": "flex",
+    "flexWrap": "wrap",
+    "width": "120",
+    "flexDirection": "row"
+  },
+  "label": {
+    "marginTop": "10",
+    "textAlign": "center",
+    "marginLeft": "20",
+    "border": "2px solid",
+    "borderRadius": "20",
+    "color": "#00caca",
+    "fontSize": "35",
+    "paddingTop": "3",
+    "paddingBottom": "3",
+    "paddingLeft": "10",
+    "paddingRight": "10"
+  },
+  "labeltext": {
+    "fontSize": "35",
+    "color": "#00caca"
+  },
+  "text": {
+    "fontSize": "40",
+    "color": "rgb(0,0,0)"
+  },
+  "buy": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": "230",
+    "height": "100",
+    "marginTop": "50",
+    "border": "2px solid",
+    "borderRadius": "20",
+    "color": "#00caca",
+    "background": "#00caca"
+  },
+  "buytext": {
+    "fontSize": "40",
+    "color": "#e0e0e0"
+  }
+}
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var stream = weex.requireModule('stream');
+// const navigator = weex.requireModule('navigator');
+var modal = weex.requireModule('modal');
+exports.default = {
+  data: function data() {
+    return {
+      publisherId: '',
+      lists: ['课外书', '东校区', '课外书', '东校区'],
+      price: '18',
+      username: 'noname',
+      bookname: '小王子',
+      description: '好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看...'
+    };
+  },
+
+  methods: {
+    goback: function goback() {},
+    chat: function chat() {},
+    trade: function trade() {}
+  },
+  created: function created() {
+    var _this = this;
+
+    stream.fetch({
+      method: 'GET',
+      url: 'http://123.207.86.98:3000/api/book/1',
+      type: 'json',
+      headers: { 'Content-Type': 'application/json' }
+    }, function (ret) {
+      if (!ret.ok) {
+        modal.toast({
+          message: 'failed',
+          duration: 2.0
+        });
+      } else {
+        _this.publisherId = ret.data.publisherId;
+        _this.price = ret.data.price;
+        _this.username = ret.data.author;
+        _this.bookname = ret.data.name;
+        _this.description = ret.data.comment;
+      }
+    }, function () {});
+  }
+};
+
+/***/ }),
+/* 41 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('div', {
+    staticClass: ["back"]
+  }, [_c('text', {
+    staticClass: ["text"],
+    on: {
+      "click": _vm.goback
+    }
+  })]), _c('image', {
+    staticClass: ["image"],
+    attrs: {
+      "resize": "contain",
+      "src": "https://gw.alicdn.com/tfs/TB1dZ4WowoQMeJjy0FnXXb8gFXa-950-1267.jpg"
+    }
+  }), _c('div', {
+    staticClass: ["second"]
+  }, [_c('text', {
+    staticClass: ["price"]
+  }, [_vm._v("¥" + _vm._s(_vm.price))]), _c('div', {
+    staticClass: ["userinfo"],
+    on: {
+      "click": _vm.chat
+    }
+  }, [_c('image', {
+    staticClass: ["icon"],
+    attrs: {
+      "resize": "contain",
+      "src": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527422893435&di=2e679e76e967ba39cb3d5fb9d7545eba&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D1588b7c5d739b6004dce0fbfd9503526%2F7bec54e736d12f2eb97e1a464dc2d56285356898.jpg"
+    }
+  }), _c('text', {
+    staticClass: ["username"]
+  }, [_vm._v(_vm._s(_vm.username))])])]), _c('div', {
+    staticClass: ["bookname"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v("书名：" + _vm._s(_vm.bookname))])]), _c('div', {
+    staticClass: ["description"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v("描述：" + _vm._s(_vm.description))])]), _c('div', {
+    staticClass: ["labelzone"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v("标签:")]), _vm._l((_vm.lists), function(label) {
+    return _c('text', {
+      key: label,
+      staticClass: ["label"]
+    }, [_vm._v(_vm._s(label))])
+  })], 2), _c('div', {
+    staticClass: ["buy"],
+    on: {
+      "click": _vm.trade
+    }
+  }, [_c('text', {
+    staticClass: ["buytext"]
+  }, [_vm._v("我要购买")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(43)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(44)
+
+/* template */
+var __vue_template__ = __webpack_require__(45)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/chat/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3cd33604"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+module.exports = {}
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+
+exports.default = {};
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div')
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(47)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(48)
+
+/* template */
+var __vue_template__ = __webpack_require__(49)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/sell/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-3ca3417e"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "wrapper": {
+    "alignItems": "center",
+    "background": "#fcfcfc"
+  },
+  "title": {
+    "flexDirection": "row",
+    "display": "flex",
+    "background": "#00e3e3",
+    "height": "80",
+    "width": 100
+  },
+  "back": {
+    "fontSize": "50",
+    "color": "#ffffff"
+  },
+  "titletext": {
+    "marginLeft": 33,
+    "fontSize": "50",
+    "color": "#ffffff"
+  },
+  "sellzone": {
+    "background": "#ffffff",
+    "display": "flex",
+    "marginTop": "30",
+    "width": "650",
+    "height": "900",
+    "border": "2px solid",
+    "borderRadius": "20",
+    "color": "#ffffff"
+  },
+  "zone": {
+    "marginTop": "5",
+    "marginLeft": "5",
+    "marginRight": "5",
+    "display": "flex",
+    "flexDirection": "row"
+  },
+  "input": {
+    "width": "400",
+    "borderBottom": "3px solid",
+    "color": "#9d9d9d",
+    "fontSize": "40"
+  },
+  "descriptionzone": {
+    "marginTop": "5",
+    "width": "650",
+    "height": "350"
+  },
+  "descriptioninput": {
+    "marginLeft": "15",
+    "width": "620",
+    "height": "300",
+    "fontSize": "40",
+    "color": "#7b7b7b"
+  },
+  "bookphotozone": {
+    "width": "600",
+    "height": "200"
+  },
+  "uploadicon": {
+    "marginLeft": "15",
+    "width": "120",
+    "height": "120"
+  },
+  "labelzone": {
+    "marginTop": "30",
+    "marginLeft": "5",
+    "marginRight": "5",
+    "display": "flex",
+    "flexDirection": "row",
+    "alignItem": "center",
+    "flexWrap": "wrap"
+  },
+  "label": {
+    "marginTop": "10",
+    "textAlign": "center",
+    "marginLeft": "20",
+    "border": "2px solid",
+    "borderRadius": "20",
+    "color": "#00caca",
+    "fontSize": "35",
+    "paddingTop": "3",
+    "paddingBottom": "3",
+    "paddingLeft": "10",
+    "paddingRight": "10"
+  },
+  "labeltext": {
+    "fontSize": "35",
+    "color": "#00caca"
+  },
+  "text": {
+    "fontSize": "40",
+    "color": "rgb(0,0,0)"
+  },
+  "buy": {
+    "justifyContent": "center",
+    "alignItems": "center",
+    "width": "230",
+    "height": "100",
+    "marginTop": "50",
+    "border": "2px solid",
+    "borderRadius": "20",
+    "color": "#00caca",
+    "background": "#00e3e3"
+  },
+  "buytext": {
+    "fontSize": "40",
+    "color": "#ffffff"
+  },
+  "shadow": {
+    "boxShadow": "0 15px 30px rgba(0, 0, 0, 0.2)"
+  },
+  "lightshadow": {
+    "boxShadow": "0 10px 15px rgba(0, 0, 0, 0.2)"
+  }
+}
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var modal = weex.requireModule('modal');
+var stream = weex.requireModule('stream');
+var imgok = 1;
+
+exports.default = {
+  data: function data() {
+    return {
+      lists: ['课外书'],
+      name: '',
+      des: '',
+      price: '',
+      label: '',
+      img: '',
+      author: '',
+      phone: '',
+      campus: '',
+      id: 1
+    };
+  },
+
+  methods: {
+    onchangename: function onchangename(event) {
+      this.name = event.value;
+    },
+    onchangedes: function onchangedes(event) {
+      this.des = event.value;
+    },
+    onchangeprice: function onchangeprice(event) {
+      this.price = event.value;
+    },
+    onchangelabel: function onchangelabel(event) {
+      this.lists.push(event.value);
+    },
+    onFileChange: function onFileChange() {
+      var form = document.getElementById('book-form');
+      var fd = new FormData(form);
+      stream.fetch({
+        method: 'POST',
+        url: 'http://123.207.86.98:3000/api/book/' + this.id + '/img',
+        type: 'json',
+        body: fd,
+        headers: { 'Content-Type': 'multipart/form-data' }
+      });
+    },
+    goback: function goback() {},
+    upload: function upload() {},
+    sell: function sell() {
+      if (this.name === '') {
+        modal.toast({
+          message: '图书名称未填写',
+          duration: 2.0
+        });
+      } else if (this.des === '') {
+        modal.toast({
+          message: '详细描述未填写',
+          duration: 2.0
+        });
+      } else if (this.price === '') {
+        modal.toast({
+          message: '价格未填写',
+          duration: 2.0
+        });
+      } else if (imgok === 0) {
+        modal.toast({
+          message: '图片未上传',
+          duration: 2.0
+        });
+      } else {
+        stream.fetch({
+          method: 'POST',
+          url: 'http://123.207.86.98:3000/api/book',
+          type: 'json',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: this.name,
+            description: this.des,
+            phone: this.phone,
+            campus: this.campus,
+            comment: this.lists.join(' '),
+            price: this.price,
+            author: this.author
+          })
+        }, function (ret) {
+          if (!ret.ok) {
+            modal.toast({
+              message: '发布失败',
+              duration: 2.0
+            });
+          } else {
+            modal.toast({
+              message: '已成功发布图书！',
+              duration: 2.0
+            });
+          }
+        });
+      }
+    }
+  }
+};
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["wrapper"]
+  }, [_c('div', {
+    staticClass: ["title", "lightshadow"]
+  }, [_c('text', {
+    staticClass: ["back"],
+    on: {
+      "click": function($event) {
+        _vm.goback()
+      }
+    }
+  }), _c('text', {
+    staticClass: ["titletext"]
+  }, [_vm._v("我要卖书")])]), _c('div', {
+    staticClass: ["sellzone", "shadow"]
+  }, [_c('div', {
+    staticClass: ["zone"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v(" 书目名称: ")]), _c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "autofocus": true,
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangename
+    }
+  })]), _c('div', {
+    staticClass: ["descriptionzone"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v(" 书目信息描述: ")]), _c('textarea', {
+    staticClass: ["descriptioninput"],
+    attrs: {
+      "placeholder": "可输入相关书目信息",
+      "autofocus": true,
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangedes
+    }
+  })]), _c('form', {
+    staticClass: ["bookphotozone"],
+    attrs: {
+      "id": "book-form"
+    }
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v(" 书目照片: ")]), _c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "file",
+      "id": "file"
+    },
+    on: {
+      "change": _vm.onFileChange
+    }
+  })]), _c('div', {
+    staticClass: ["zone"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v(" 开价: ")]), _c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "autofocus": true,
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangeprice
+    }
+  })]), _c('div', {
+    staticClass: ["labelzone"]
+  }, [_c('text', {
+    staticClass: ["text"]
+  }, [_vm._v(" 标签:")]), _vm._l((_vm.lists), function(label) {
+    return _c('text', {
+      key: label,
+      staticClass: ["label"]
+    }, [_vm._v(_vm._s(label))])
+  }), _c('input', {
+    staticClass: ["input"],
+    attrs: {
+      "type": "text",
+      "autofocus": true,
+      "value": ""
+    },
+    on: {
+      "change": _vm.onchangelabel
+    }
+  })], 2)], 1), _c('div', {
+    staticClass: ["buy", "lightshadow"],
+    on: {
+      "click": function($event) {
+        _vm.sell()
+      }
+    }
+  }, [_c('text', {
+    staticClass: ["buytext"]
+  }, [_vm._v("提交")])])])
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(51)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(52)
+
+/* template */
+var __vue_template__ = __webpack_require__(53)
+__vue_options__ = __vue_exports__ = __vue_exports__ || {}
+if (
+  typeof __vue_exports__.default === "object" ||
+  typeof __vue_exports__.default === "function"
+) {
+if (Object.keys(__vue_exports__).some(function (key) { return key !== "default" && key !== "__esModule" })) {console.error("named exports are not supported in *.vue files.")}
+__vue_options__ = __vue_exports__ = __vue_exports__.default
+}
+if (typeof __vue_options__ === "function") {
+  __vue_options__ = __vue_options__.options
+}
+__vue_options__.__file = "/Users/sugerpocket/workspace/used-book-trading-platform/src/pages/goods/index.vue"
+__vue_options__.render = __vue_template__.render
+__vue_options__.staticRenderFns = __vue_template__.staticRenderFns
+__vue_options__._scopeId = "data-v-e35a1900"
+__vue_options__.style = __vue_options__.style || {}
+__vue_styles__.forEach(function (module) {
+  for (var name in module) {
+    __vue_options__.style[name] = module[name]
+  }
+})
+if (typeof __register_static_styles__ === "function") {
+  __register_static_styles__(__vue_options__._scopeId, __vue_styles__)
+}
+
+module.exports = __vue_exports__
+
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports) {
+
+module.exports = {
+  "container": {
+    "backgroundColor": "#F6F6F6",
+    "width": 100
+  },
+  "img": {
+    "alignItems": "center"
+  },
+  "covers": {
+    "height": "300",
+    "width": "200",
+    "marginTop": "25",
+    "marginRight": "25",
+    "marginBottom": "25",
+    "marginLeft": "25"
+  },
+  "list": {
+    "width": 100
+  },
+  "panel": {
+    "height": "350",
+    "backgroundColor": "#FFFFFF",
+    "marginLeft": "20",
+    "marginRight": "20",
+    "marginBottom": "20",
+    "marginTop": "20",
+    "flexDirection": "row"
+  },
+  "info": {
+    "marginLeft": "20",
+    "marginRight": "20",
+    "marginBottom": "10",
+    "marginTop": "20",
+    "justifyContent": "space-between"
+  },
+  "op": {
+    "flexDirection": "row"
+  },
+  "right": {
+    "width": "46",
+    "height": "46"
+  },
+  "block": {
+    "backgroundColor": "#FFFFFF",
+    "width": "100",
+    "top": "-35",
+    "marginLeft": "200",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  "line": {
+    "backgroundColor": "#585858",
+    "height": "0.5",
+    "width": "80",
+    "marginLeft": "10",
+    "marginRight": "10"
+  },
+  "buttons": {
+    "width": "120",
+    "height": "50",
+    "fontSize": "26",
+    "borderColor": "#d4d4d4",
+    "borderWidth": "2",
+    "borderRadius": 35,
+    "marginTop": "10",
+    "marginRight": "10",
+    "marginBottom": "10",
+    "marginLeft": "10",
+    "paddingTop": "5",
+    "paddingRight": "5",
+    "paddingBottom": "5",
+    "paddingLeft": "5"
+  },
+  "text-h1": {
+    "color": "#ECAA96",
+    "fontSize": "32",
+    "marginTop": "20"
+  },
+  "text-h2": {
+    "marginTop": "40",
+    "marginLeft": "10"
+  }
+}
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+var stream = weex.requireModule('stream');
+// const modal = weex.requireModule('modal');
+exports.default = {
+  data: function data() {
+    return {
+      lists: [{
+        tradeId: '1',
+        buyerId: '15331059',
+        sellerId: '15331060',
+        bookId: '2',
+        publisherId: '15331060',
+        name: 'test book2',
+        author: 'tinglideng',
+        img: 'default.jpg',
+        campus: 'sysu',
+        state: 3,
+        description: 'test',
+        phoneNum: '13719177172',
+        comment: '计算机 测试',
+        price: 13.7
+      }, {
+        tradeId: '2',
+        buyerId: '15331059',
+        sellerId: '15331060',
+        bookId: '2',
+        publisherId: '15331060',
+        name: 'test book2',
+        author: 'tinglideng',
+        img: 'default.jpg',
+        campus: 'sysu',
+        state: 3,
+        description: 'test',
+        phoneNum: '13719177172',
+        comment: '计算机 测试',
+        price: 13.7
+      }]
+    };
+  },
+  created: function created() {
+    var TRADE_URL = 'http://123.207.86.98:3000/api/trade';
+    stream.fetch({
+      method: 'GET',
+      url: TRADE_URL,
+      type: 'json'
+    }, function (ret) {
+      if (!ret.ok) {
+        // console.log('error');
+      } else {
+          // console.log('get' + ret)
+          // this.lists = ret.data;
+        }
+    });
+  },
+
+
+  methods: {}
+};
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["container"]
+  }, [_c('div', [_c('list', {
+    staticClass: ["list"]
+  }, _vm._l((_vm.lists), function(item) {
+    return _c('cell', {
+      key: item.tradeId,
+      staticClass: ["cell"],
+      appendAsTree: true,
+      attrs: {
+        "append": "tree"
+      }
+    }, [_c('div', {
+      staticClass: ["panel"]
+    }, [_vm._m(0, true), _c('div', {
+      staticClass: ["info"]
+    }, [_c('div', [_c('text', {
+      attrs: {
+        "calss": "text-h2"
+      }
+    }, [_vm._v(_vm._s(item.name))]), _c('text', {
+      staticClass: ["text-h1"]
+    }, [_vm._v(_vm._s(item.price))])]), _vm._m(1, true)])])])
+  }))])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["img"]
+  }, [_c('image', {
+    staticClass: ["covers"],
+    attrs: {
+      "src": "https://upload-images.jianshu.io/upload_images/12650180-dd05a051754ddb19.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400"
+    }
+  })])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: ["op"]
+  }, [_c('text', {
+    staticClass: ["buttons"]
+  }, [_vm._v("确认收货")]), _c('text', {
+    staticClass: ["buttons"]
+  }, [_vm._v("取消交易")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __vue_exports__, __vue_options__
+var __vue_styles__ = []
+
+/* styles */
+__vue_styles__.push(__webpack_require__(55)
+)
+
+/* script */
+__vue_exports__ = __webpack_require__(56)
+
+/* template */
+var __vue_template__ = __webpack_require__(57)
 __vue_options__ = __vue_exports__ = __vue_exports__ || {}
 if (
   typeof __vue_exports__.default === "object" ||
@@ -2662,7 +6454,7 @@ module.exports = __vue_exports__
 
 
 /***/ }),
-/* 6 */
+/* 55 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2691,7 +6483,7 @@ module.exports = {
 }
 
 /***/ }),
-/* 7 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2700,7 +6492,6 @@ module.exports = {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-//
 //
 //
 //
@@ -2719,7 +6510,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 8 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -2730,9 +6521,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": _vm.logo
     }
-  }), _c('text', {
-    staticClass: ["greeting"]
-  }, [_vm._v("The environment is ready!")]), _c('router-view')], 1)
+  }), _c('router-view')], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 

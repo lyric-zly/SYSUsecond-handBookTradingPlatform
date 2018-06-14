@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper">
-    <image :src="logo" class="logo" />
     <router-view/>
   </div>
 </template>
@@ -9,18 +8,12 @@
 export default {
   name: 'App',
   data() {
-    return {
-      logo: 'https://gw.alicdn.com/tfs/TB1yopEdgoQMeJjy1XaXXcSsFXa-640-302.png',
-    };
+    return {};
   },
 };
 </script>
 
 <style scoped>
-  .wrapper {
-    justify-content: center;
-    align-items: center;
-  }
   .logo {
     width: 424px;
     height: 200px;

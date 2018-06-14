@@ -4,9 +4,9 @@
     <div class="login">
       <div class="input-wrapper">
         <input
-          @input="oninputUserNumber"
-          @change="onchangeUserNumber"
-          class="input" type="text"
+          v-model="userNumber"
+          class="input"
+          type="text"
           placeholder="请输入学号"
           utofocus="true"
           value=""
@@ -15,8 +15,7 @@
       </div>
       <div class="input-wrapper">
         <input
-          @input="oninputUserPassword"
-          @change="onchangeUserPassword"
+          v-model="userPassword"
           class="input"
           type="password"
           placeholder="请输入密码"
@@ -44,114 +43,16 @@
 const stream = weex.requireModule('stream');
 // const navigator = weex.requireModule('navigator');
 const modal = weex.requireModule('modal');
-let check = 0;
-let nicknameLogin = '';
 
 module.exports = {
   data() {
     return {
-      userNumber: '',
-      userPassword: '',
+      userNumber: 15331060,
+      userPassword: '12345678',
       hint: '',
     };
   },
   methods: {
-    onchangeUserNumber(event) {
-      this.userNumber = event.value;
-      stream.fetch(
-        {
-          method: 'POST',
-          url: 'http://123.207.86.98:3000/api/user/login',
-          type: 'json',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: this.userNumber,
-            password: this.userPassword,
-          }),
-        },
-        (ret) => {
-          if (!ret.ok) {
-            check = 0;
-          } else {
-            check = 1;
-            nicknameLogin = ret.data.nickname;
-          }
-        },
-        // response => {}
-      );
-    },
-    oninputUserNumber(event) {
-      this.userNumber = event.value;
-      stream.fetch(
-        {
-          method: 'POST',
-          url: 'http://123.207.86.98:3000/api/user/login',
-          type: 'json',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: this.userNumber,
-            password: this.userPassword,
-          }),
-        },
-        (ret) => {
-          if (!ret.ok) {
-            check = 0;
-          } else {
-            check = 1;
-            nicknameLogin = ret.data.nickname;
-          }
-        },
-        // response => {}
-      );
-    },
-    onchangeUserPassword(event) {
-      this.userPassword = event.value;
-      stream.fetch(
-        {
-          method: 'POST',
-          url: 'http://123.207.86.98:3000/api/user/login',
-          type: 'json',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: this.userNumber,
-            password: this.userPassword,
-          }),
-        },
-        (ret) => {
-          if (!ret.ok) {
-            check = 0;
-          } else {
-            check = 1;
-            nicknameLogin = ret.data.nickname;
-          }
-        },
-        // response => {}
-      );
-    },
-    oninputUserPasswor(event) {
-      this.userPassword = event.value;
-      stream.fetch(
-        {
-          method: 'POST',
-          url: 'http://123.207.86.98:3000/api/user/login',
-          type: 'json',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: this.userNumber,
-            password: this.userPassword,
-          }),
-        },
-        (ret) => {
-          if (!ret.ok) {
-            check = 0;
-          } else {
-            check = 1;
-            nicknameLogin = ret.data.nickname;
-          }
-        },
-        // (response) => {},
-      );
-    },
     /* 找回密码 */
     findPassword() {
       this.$router.push({ name: 'forget-password' });
@@ -165,39 +66,53 @@ module.exports = {
     /* 处理登录 */
 
     login() {
-      if (check === 1) {
-        modal.toast({
-          message: '登录成功',
-          duration: 2.0,
-        });
-        this.$router.push({
-          path: '/home',
-          query: {
+      stream.fetch(
+        {
+          method: 'POST',
+          url: 'http://123.207.86.98:3000/api/user/login',
+          type: 'json',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
             username: this.userNumber,
             password: this.userPassword,
-            nickname: nicknameLogin,
-            flag: '3',
-          },
-        });
-      } else {
-        modal.toast({
-          message: '学号或密码错误',
-          duration: 2.0,
-        });
-      }
+          }),
+        },
+        (ret) => {
+          if (!ret.ok) {
+            modal.toast({
+              message: '学号或密码错误',
+              duration: 2.0,
+            });
+          } else {
+            modal.toast({
+              message: '登录成功',
+              duration: 2.0,
+            });
+            console.log(ret);
+            this.$router.push({
+              path: '/home',
+              query: {
+                username: ret.data.userNumber,
+                password: this.userPassword,
+                nickname: ret.data.nickname,
+                flag: '3',
+              },
+            });
+          }
+        },
+        // (response) => {},
+      );
     },
   },
 };
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-image: url('https://wx3.sinaimg.cn/mw690/006tzQZEgy1frtl3g34dyj30u01hcgnk.jpg');
 }
 .input-wrapper {
   width: 550px;

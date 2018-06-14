@@ -54,5 +54,13 @@
   <string>bundlejs/index.js</string>
   <key>WXSocketConnectionURL</key>
   <string>ws://172.19.129.91:8080</string>
+  <key>WXEntryBundleURL</key>
+  <string>bundlejs/index.js</string>
+  <key>WXSocketConnectionURL</key>
+  <string>ws://10.70.111.153:8080</string>
+  <key>WXEntryBundleURL</key>
+  <string>bundlejs/index.js</string>
+  <key>WXSocketConnectionURL</key>
+  <string>ws://10.68.105.165:8080</string>
 </dict>
 </plist>

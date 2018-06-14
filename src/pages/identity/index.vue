@@ -17,6 +17,7 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
+  flex-grow: 1;
   background-size: cover;
   background-image: url('https://wx3.sinaimg.cn/mw690/006tzQZEgy1frtl3g34dyj30u01hcgnk.jpg');
 }
