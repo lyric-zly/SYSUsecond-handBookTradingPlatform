@@ -49,7 +49,7 @@ module.exports = new Router({
       component: Sell,
     },
     {
-      path: '/goods/:type',
+      path: '/goods/:state',
       component: Goods,
     },
     {
@@ -62,18 +62,26 @@ module.exports = new Router({
     },
     {
       path: '/home',
+      name: 'home',
       component: Home,
       children: [
         {
-          path: '/list',
+          path: '',
+          redirect: 'list',
+        },
+        {
+          path: 'list',
+          name: 'book-list',
           component: BookList,
         },
         {
-          path: '/message',
+          path: 'message',
+          name: 'message',
           component: Message,
         },
         {
-          path: '/profile',
+          path: 'profile',
+          name: 'profile',
           component: Profile,
         },
       ],

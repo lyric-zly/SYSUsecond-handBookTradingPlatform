@@ -3,11 +3,11 @@
       <div class="back">
         <text class="text" @click="goback"></text>
       </div>
-      <image class="image" resize="contain" src="image_src"></image>
+      <image class="image" resize="contain" src="image_src" />
     <div class="second">
       <text class="price">¥{{price}}</text>
       <div class="userinfo" @click="chat">
-        <image class="icon" resize="contain" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527422893435&di=2e679e76e967ba39cb3d5fb9d7545eba&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D1588b7c5d739b6004dce0fbfd9503526%2F7bec54e736d12f2eb97e1a464dc2d56285356898.jpg"></image>
+        <image class="icon" resize="contain" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527422893435&di=2e679e76e967ba39cb3d5fb9d7545eba&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D1588b7c5d739b6004dce0fbfd9503526%2F7bec54e736d12f2eb97e1a464dc2d56285356898.jpg" />
         <text class="username">{{username}}</text>
       </div>
     </div>

@@ -40,7 +40,9 @@
 </template>
 
 <script>
-const stream = weex.requireModule('stream');
+import axios from 'axios';
+
+// const stream = weex.requireModule('stream');
 // const navigator = weex.requireModule('navigator');
 const modal = weex.requireModule('modal');
 
@@ -66,41 +68,59 @@ module.exports = {
     /* 处理登录 */
 
     login() {
-      stream.fetch(
-        {
-          method: 'POST',
-          url: 'http://123.207.86.98:3000/api/user/login',
-          type: 'json',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            username: this.userNumber,
-            password: this.userPassword,
-          }),
-        },
-        (ret) => {
-          if (!ret.ok) {
-            modal.toast({
-              message: '学号或密码错误',
-              duration: 2.0,
-            });
-          } else {
-            modal.toast({
-              message: '登录成功',
-              duration: 2.0,
-            });
-            this.$router.push({
-              path: '/home',
-              query: {
-                username: ret.data.userNumber,
-                password: this.userPassword,
-                nickname: ret.data.nickname,
-                flag: '3',
-              },
-            });
-          }
-        },
-        // (response) => {},
-      );
+      axios
+        .post('http://123.207.86.98:3000/api/user/login', { username: this.userNumber, password: this.userPassword })
+        .then((result) => {
+          this.$store.default.commit('login', {
+            username: result.data.studentId,
+            nickname: result.data.nickname,
+            token: result.data.token,
+          });
+          this.$router.push({
+            path: '/home',
+          });
+        }).catch(() => {
+          modal.toast({
+            message: '学号或密码错误',
+            duration: 2.0,
+          });
+        });
+      // stream.fetch(
+      //   {
+      //     method: 'POST',
+      //     url: 'http://123.207.86.98:3000/api/user/login',
+      //     type: 'json',
+      //     headers: { 'Content-Type': 'application/json' },
+      //     body: JSON.stringify({
+      //       username: this.userNumber,
+      //       password: this.userPassword,
+      //     }),
+      //   },
+      //   (ret) => {
+      //     console.log(ret);
+      //     if (!ret.ok) {
+      //       modal.toast({
+      //         message: '学号或密码错误',
+      //         duration: 2.0,
+      //       });
+      //     } else {
+      //       modal.toast({
+      //         message: '登录成功',
+      //         duration: 2.0,
+      //       });
+      //       this.$router.push({
+      //         path: '/home',
+      //         query: {
+      //           username: ret.data.userNumber,
+      //           password: this.userPassword,
+      //           nickname: ret.data.nickname,
+      //           flag: '3',
+      //         },
+      //       });
+      //     }
+      //   },
+      //   // (response) => {},
+      // );
     },
   },
 };

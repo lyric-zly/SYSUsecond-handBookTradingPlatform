@@ -41,19 +41,7 @@ const stream = weex.requireModule('stream');
 export default {
   data() {
     return {
-      boxes: [{
-        sessionId: 1,
-        senderId: 15331060,
-        recieverId: 15331059,
-        content: '你好，请问在吗？',
-        time: '2018-06-07T07:49:39.000Z',
-      }, {
-        sessionId: 2,
-        senderId: 15331078,
-        recieverId: 15331059,
-        content: '你好，请问在吗？请问《小王子》还在吗还在吗？',
-        time: '2018-06-07T07:49:39.000Z',
-      }],
+      boxes: [],
     };
   },
   methods: {
@@ -63,7 +51,7 @@ export default {
     },
     /* 个人信息 */
     seeprofile() {
-      this.$router.push({ path: '/profile' });
+      this.$router.push({ path: '/home/profile' });
     },
   },
   created() {
@@ -71,7 +59,10 @@ export default {
       method: 'GET',
       url: 'http://123.207.86.98:3000/api/message/last',
       type: 'json',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        Authorization: `Bearer ${this.$store.default.state.token}`,
+        'Content-Type': 'application/json',
+      },
     },
     (rec) => {
       if (rec.ok) {
@@ -92,6 +83,7 @@ input::-webkit-input-placeholder{
 
 <style scoped>
 .wrapped{
+  width: 100%;
   align-items: center;
 }
 

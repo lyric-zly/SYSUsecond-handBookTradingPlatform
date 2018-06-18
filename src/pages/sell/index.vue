@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
       <div class="title lightshadow">
-        <text class="back" @click="goback()"></text>
+        <text class="back" @click="goback()">&lt;</text>
         <text class="titletext">我要卖书</text>
       </div>
       <div class="sellzone shadow">
@@ -79,10 +79,15 @@ export default {
         url: `http://123.207.86.98:3000/api/book/${this.id}/img`,
         type: 'json',
         body: fd,
-        headers: { 'Content-Type': 'multipart/form-data' },
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
+        },
       });
     },
-    goback() {},
+    goback() {
+      this.$router.go(-1);
+    },
     upload() {},
     sell() {
       if (this.name === '') {
@@ -111,7 +116,10 @@ export default {
             method: 'POST',
             url: 'http://123.207.86.98:3000/api/book',
             type: 'json',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+              Authorization: `Bearer ${this.$store.default.state.token}`,
+              'Content-Type': 'application/json',
+            },
             body: JSON.stringify({
               name: this.name,
               description: this.des,

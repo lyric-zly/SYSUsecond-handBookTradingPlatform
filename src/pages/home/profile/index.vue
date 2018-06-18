@@ -7,7 +7,7 @@
         <text class="text-h2">学院： {{college}}</text>
       </div>
       <div class="avatar-container">
-        <image class="userinfo-avatar" src="https://upload-images.jianshu.io/upload_images/12650180-6b048ad0d9bd34aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" resize="cover"></image>
+        <image class="userinfo-avatar" src="https://upload-images.jianshu.io/upload_images/12650180-6b048ad0d9bd34aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" resize="cover" />
       </div>
     </div>
     <div class="cells" @click="wantsell">
@@ -21,12 +21,12 @@
         </div>
         <div class="line"></div>
       </div>
-      <div class="item" @click="goTo">
-        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-4ffaac6d7e7974f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"></image>
+      <div class="item" @click="goTo(3)">
+        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-4ffaac6d7e7974f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">等待收货</text>
       </div>
-      <div class="item" @click="goTo">
-        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-9b967727a94b81ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"></image>
+      <div class="item" @click="goTo(2)">
+        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-9b967727a94b81ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">已买入</text>
       </div>
     </div>
@@ -37,16 +37,16 @@
         </div>
         <div class="line"></div>
       </div>
-      <div class="item" @click="goTo">
-        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-254508d4005ef76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"></image>
+      <div class="item" @click="goTo(1)">
+        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-254508d4005ef76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">正在出售</text>
       </div>
-      <div class="item" @click="goTo">
-        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-b36db1a96ee2edae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"></image>
+      <div class="item" @click="goTo(2)">
+        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-b36db1a96ee2edae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">等待确认</text>
       </div>
-      <div class="item" @click="goTo">
-        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-7f2b966fd2463e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96"></image>
+      <div class="item" @click="goTo(3)">
+        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-7f2b966fd2463e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">已卖出</text>
       </div>
     </div>
@@ -63,8 +63,8 @@ const modal = weex.requireModule('modal');
 export default {
   data() {
     return {
-      studentID: '111',
-      nickname: '222',
+      studentID: '',
+      nickname: '',
       college: '数据科学与计算机学院',
     };
   },
@@ -76,6 +76,10 @@ export default {
         method: 'GET',
         url: USER_URL,
         type: 'json',
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
+        },
       },
       (ret) => {
         if (!ret.ok) {
@@ -92,15 +96,14 @@ export default {
     );
   },
   methods: {
-    goTo() {
-      // this.$router
-      // this.$router.push({ path: '/goods' });
+    goTo(state) {
+      this.$router.push({ path: `/goods/${state}` });
     },
     wantsell() {
-
+      this.$router.push({ path: '/sell' });
     },
     logout() {
-
+      this.$router.push({ path: '/' });
     },
   },
 };

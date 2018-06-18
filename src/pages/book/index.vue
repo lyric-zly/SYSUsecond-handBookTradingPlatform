@@ -3,12 +3,12 @@
       <div class="back">
         <text class="text" @click="goback"></text>
       </div>
-      <image class="image" resize="contain" src="https://gw.alicdn.com/tfs/TB1dZ4WowoQMeJjy0FnXXb8gFXa-950-1267.jpg"></image>
+      <image class="image" resize="contain" src="https://gw.alicdn.com/tfs/TB1dZ4WowoQMeJjy0FnXXb8gFXa-950-1267.jpg" />
     <div class="second">
       <text class="price">¥{{price}}</text>
       <div class="userinfo" @click="chat">
-        <image class="icon" resize="contain" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527422893435&di=2e679e76e967ba39cb3d5fb9d7545eba&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D1588b7c5d739b6004dce0fbfd9503526%2F7bec54e736d12f2eb97e1a464dc2d56285356898.jpg"></image>
-        <text class="username">{{username}}</text>
+        <image class="icon" resize="contain" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527422893435&di=2e679e76e967ba39cb3d5fb9d7545eba&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fforum%2Fw%3D580%2Fsign%3D1588b7c5d739b6004dce0fbfd9503526%2F7bec54e736d12f2eb97e1a464dc2d56285356898.jpg" />
+        <text class="username">{{nickname}}</text>
       </div>
     </div>
     <div class="bookname">
@@ -34,26 +34,59 @@ const modal = weex.requireModule('modal');
 export default {
   data() {
     return {
-      publisherId: '',
-      lists: ['课外书', '东校区', '课外书', '东校区'],
-      price: '18',
-      username: 'noname',
-      bookname: '小王子',
-      description: '好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看好看...',
+      bookId: 0,
+      publisherId: 0,
+      lists: [],
+      price: 0,
+      nickname: '',
+      bookname: '',
+      description: '',
     };
   },
   methods: {
-    goback() {},
-    chat() {},
-    trade() {},
+    goback() {
+      this.$router.back(-1);
+    },
+    chat() {
+      this.$router.push({ path: '/chat' });
+    },
+    trade() {
+      stream.fetch({
+        method: 'POST',
+        url: `http://123.207.86.98:3000/api/trade/${this.bookId}`,
+        type: 'json',
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+      (ret) => {
+        if (!ret.ok) {
+          modal.toast({
+            message: 'failed',
+            duration: 2.0,
+          });
+        } else {
+          modal.toast({
+            message: '交易成功',
+            duration: 2.0,
+          });
+          this.$router.back(-1);
+        }
+      });
+    },
   },
   created() {
+    this.bookId = this.$route.params.id;
     stream.fetch(
       {
         method: 'GET',
-        url: 'http://123.207.86.98:3000/api/book/1',
+        url: `http://123.207.86.98:3000/api/book/${this.bookId}`,
         type: 'json',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
+        },
       },
       (ret) => {
         if (!ret.ok) {
@@ -64,9 +97,10 @@ export default {
         } else {
           this.publisherId = ret.data.publisherId;
           this.price = ret.data.price;
-          this.username = ret.data.author;
+          this.nickname = ret.data.author;
           this.bookname = ret.data.name;
-          this.description = ret.data.comment;
+          this.description = ret.data.description;
+          this.lists = ret.data.comment.split(' ').filter(item => !!item);
         }
       },
       () => {},

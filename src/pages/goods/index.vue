@@ -5,7 +5,7 @@
         <cell class="cell" v-for="item in lists" :key="item.tradeId">
           <div class="panel">
             <div class="img">
-              <image class="covers" src="https://upload-images.jianshu.io/upload_images/12650180-dd05a051754ddb19.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400"></image>
+              <image class="covers" src="https://upload-images.jianshu.io/upload_images/12650180-dd05a051754ddb19.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" />
             </div>
             <div class="info">
               <div>
@@ -71,10 +71,14 @@ export default {
         method: 'GET',
         url: TRADE_URL,
         type: 'json',
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
+        },
       },
       (ret) => {
         if (!ret.ok) {
-          // console.log('error');
+          this.lists = ret.data.filter(item => item.state === Number(this.$route.params.state));
         } else {
           // console.log('get' + ret)
           // this.lists = ret.data;
