@@ -3,7 +3,7 @@
     <div>
       <div class="userinfo">
         <text class="text-h5">姓名： {{nickname}}</text>
-        <text class="text-h1">学号： {{studentID}}</text>
+        <text class="text-h1">学号： {{studentId}}</text>
         <text class="text-h2">学院： {{college}}</text>
       </div>
       <div class="avatar-container">
@@ -25,7 +25,7 @@
         <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-4ffaac6d7e7974f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">等待收货</text>
       </div>
-      <div class="item" @click="goTo(2)">
+      <div class="item" @click="goTo(4)">
         <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-9b967727a94b81ce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">已买入</text>
       </div>
@@ -45,7 +45,7 @@
         <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-b36db1a96ee2edae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">等待确认</text>
       </div>
-      <div class="item" @click="goTo(3)">
+      <div class="item" @click="goTo(4)">
         <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-7f2b966fd2463e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">已卖出</text>
       </div>
@@ -63,7 +63,7 @@ const modal = weex.requireModule('modal');
 export default {
   data() {
     return {
-      studentID: '',
+      studentId: '',
       nickname: '',
       college: '数据科学与计算机学院',
     };
@@ -89,7 +89,7 @@ export default {
             duration: 3.0,
           });
         } else {
-          this.studentID = ret.data.studentID;
+          this.studentId = ret.data.studentId;
           this.nickname = ret.data.nickname;
         }
       },
@@ -105,6 +105,14 @@ export default {
     logout() {
       this.$router.push({ path: '/' });
     },
+    /* 回主页 */
+    gohome() {
+      this.$router.push({ path: '/home' });
+    },
+    /* 个人信息 */
+    seeprofile() {
+      this.$router.push({ path: '/home/profile' });
+    },
   },
 };
 </script>
@@ -115,7 +123,7 @@ export default {
   }
 
   .avatar-container {
-    top: -180px;
+    top: -220px;
     flex-direction: row;
     justify-content: center;
   }
@@ -191,5 +199,25 @@ export default {
     margin-left: 30px;
     margin-right: 40px;
     align-items: center;
+  }
+
+  .footerzone{
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 9%;
+    border-top: 2px gray solid;
+  }
+
+.footer{
+    /* margin-top:10px;*/
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    height: 100%;
   }
 </style>
