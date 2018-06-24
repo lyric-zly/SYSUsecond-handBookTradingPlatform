@@ -38,7 +38,7 @@
         <div class="line"></div>
       </div>
       <div class="item" @click="goTo(1)">
-        <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-254508d4005ef76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
+        <image style="width:96px;height:96px;" src="tt" />
         <text class="text-h4">正在出售</text>
       </div>
       <div class="item" @click="goTo(2)">
@@ -54,13 +54,6 @@
       <text class="text-h3">退出当前帐号</text>
       <text class="text-h3">></text>
     </div>
-    <div class="footerzone">
-      <div class="footer">
-        <image class="footericon" @click="gohome()" src="https://upload-images.jianshu.io/upload_images/1409578-ffd1470f7531581e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
-        <image class="footericon" @click="seemessage()" src="https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" />
-        <image class="footericon" src="https://upload-images.jianshu.io/upload_images/12650180-3ccc67a7c239120b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
-      </div>
-    </div>
   </div>
 </template>
 
@@ -71,6 +64,7 @@ export default {
   data() {
     return {
       studentId: '',
+      tt: 'https://upload-images.jianshu.io/upload_images/12650180-254508d4005ef76a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96',
       nickname: '',
       college: '数据科学与计算机学院',
     };
@@ -116,9 +110,9 @@ export default {
     gohome() {
       this.$router.push({ path: '/home' });
     },
-    /* 消息列表 */
-    seemessage() {
-      this.$router.push({ path: '/home/message' });
+    /* 个人信息 */
+    seeprofile() {
+      this.$router.push({ path: '/home/profile' });
     },
   },
 };
@@ -208,27 +202,23 @@ export default {
     align-items: center;
   }
 
-.footerzone {
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 11%;
-  border-top: 1px gray solid;
-  // box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
-  background: white;
-}
-.footer {
-  margin-top: 4px;
-  flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-.footericon {
-  height: 80px;
-  width: 80px;
-}
+  .footerzone{
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 9%;
+    border-top: 2px gray solid;
+  }
+
+.footer{
+    /* margin-top:10px;*/
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 </style>
