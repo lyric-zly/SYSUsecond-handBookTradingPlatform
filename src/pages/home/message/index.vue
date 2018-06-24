@@ -82,21 +82,22 @@ input::-webkit-input-placeholder{
 </style>
 
 <style scoped>
-.wrapped{
+.wrapped {
   width: 100%;
   align-items: center;
 }
 
-.messagetype{
+.messagetype {
   padding-top: 20px;
   padding-bottom: 10px;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   height: 9%;
-  border-bottom: 2px gray solid;
+  background: white;
+  border-bottom: 1px gray solid;
 }
-.chatzone{
+.chatzone {
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -104,16 +105,16 @@ input::-webkit-input-placeholder{
   height: 85%;
   border-right: 1px gray solid;
 }
-.chaticon{
+.chaticon {
   height: 60px;
   width: 60px;
 }
-.chosedtext{
+.chosedtext {
   font-size: 40px;
   color: #00CACA;
 }
 
-.securedzone{
+.securedzone {
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -121,17 +122,17 @@ input::-webkit-input-placeholder{
   height: 85%;
 }
 
-.securedicon{
+.securedicon {
   height: 70px;
   width: 70px;
 }
 
-.unchosedtext{
+.unchosedtext {
   font-size: 40px;
   color: #C0C0C0;
 }
 
-.chatlist{
+.chatlist {
   /*flex-direction: column;*/
   /*justify-content: flex-start;*/
   width: 100%;
@@ -139,15 +140,13 @@ input::-webkit-input-placeholder{
   /*border-bottom: 2px gray solid;*/
 }
 
-.list{
+.list {
   flex-direction: column;
   width: 100%;
 }
 
-.cell{
-  padding-top: 20px;
-  /*padding-top: 20px;*/
-  padding-bottom: 5px;
+.cell {
+  padding: 10px 10px 10px 10px;
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
@@ -155,72 +154,74 @@ input::-webkit-input-placeholder{
   border-bottom: 1px gray solid;
 }
 
-.chatvirzone{
+.chatvirzone {
   /*justify-content:center;
   align-items: center;*/
   width: 120px;
   height: 90%;
 }
-.sellervir{
-  height: 120px;
-  width: 120px;
+.sellervir {
+  height: 130px;
+  width: 130px;
 }
 
-.chattextzone{
+.chattextzone {
+  padding: 10px 10px 10px 10px;
   flex-direction: column;
   justify-content: center;
   width: 83%;
   height: 100%;
 }
 
-.chatnametime{
+.chatnametime {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
-/*.sellername{
+/*.sellername {
   width: 70%;
   height: 100%;
 }*/
-.sellernametext{
+.sellernametext {
+  font-size: 45px;
+  //font-weight: bold;
+}
+
+.posttimetext {
+  color: gray;
+}
+
+
+.chatdetailtext {
+  color: gray;
   font-size: 35px;
-  font-weight: bold;
-}
-
-.posttimetext{
-  color: gray;
-}
-
-
-.chatdetailtext{
-  color: gray;
-  font-size: 30px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
   width: 92%;
 }
 
-.footerzone{
+.footerzone {
   justify-content: center;
   align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 9%;
-  border-top: 2px gray solid;
+  height: 11%;
+  border-top: 1px gray solid;
+  //box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+  background: white;
 }
-.footer{
- /* margin-top:10px;*/
+.footer {
+  margin-top: 4px;
   flex-direction: row;
-  align-items: center;
   justify-content: space-around;
   position: absolute;
   width: 100%;
   height: 100%;
 }
-.footericon{
-  height: 70px;
-  width: 70px;
+.footericon {
+  height: 80px;
+  width: 80px;
 }
 </style>

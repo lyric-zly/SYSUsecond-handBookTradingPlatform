@@ -14,15 +14,16 @@
         <text class="searchfuntext">价格排序</text>
       </div>
     </div>
-    <div class="listzone">
+    <div v-show="!showFilter" class="listzone">
       <list class="list">
         <cell class="cell" v-for="item in boxes" :key="item.bookId" @click="goDetail(item.bookId)">
-          <image class="bookpicture" :src="item.img"/>
+          <image v-if="item.img === 'default.jpg'" class="bookpicture" src="https://upload-images.jianshu.io/upload_images/12650180-dd05a051754ddb19.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/400" />
+          <image v-else class="bookpicture" src="item.img"/>
           <div class="textinfozone">
             <text class="bookname">书名：《{{item.name}}》 </text>
-            <text class="describe" lines="2">描述：{{item.description}}</text>
+            <text class="describe" lines="1">描述：{{item.description}}</text>
             <div class="priceandseller">
-              <text class="price">￥ {{item.price}}</text>
+              <text class="price">￥{{item.price}}</text>
               <image class="sellervia" src="https://upload-images.jianshu.io/upload_images/1409578-ccda36498de1ec07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
               <text class="sellername">{{item.publisherId}}</text>
             </div>
@@ -61,7 +62,7 @@
     </div>
     <div class="footerzone">
       <div class="footer">
-        <image class="footericon" @click="gohome()" src="https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
+        <image class="footericon" @click="triggerShowHome" src="https://upload-images.jianshu.io/upload_images/1409578-3c1a20f47f897e3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
         <image class="footericon" @click="seemessage()" src="https://upload-images.jianshu.io/upload_images/1409578-a18cd9af9f80d32e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
         <image class="footericon" @click="seeprofile()" src="https://upload-images.jianshu.io/upload_images/1409578-aa3c5917b4badbf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/>
       </div>
@@ -71,6 +72,7 @@
 
 <script>
 const stream = weex.requireModule('stream');
+/* 初始showFilter值为false,home页显示为书籍列表 */
 export default {
   data() {
     return {
@@ -97,7 +99,11 @@ export default {
     },
 
     triggerShowFilter() {
-      this.showFilter = !this.showFilter;
+      //this.showFilter = !this.showFilter;
+      this.showFilter = true;
+    },
+    triggerShowHome() {
+      this.showFilter = false;
     },
   },
   created() {
@@ -134,6 +140,7 @@ input::-webkit-input-placeholder {
   width: 100%;
   min-height: 100%;
   align-items: center;
+  //background-color: #F6F6F6;
 }
 .searchzone {
   margin-top: 10px;
@@ -165,8 +172,9 @@ input::-webkit-input-placeholder {
   margin-top: 20px;
   flex-direction: row;
   justify-content: space-between;
-  width: 90%; /*470px;*/
+  width: 100%;
   height: 70px;
+  border-bottom: 1px gray solid;
 }
 .searchfunfilter {
   flex-direction: row;
@@ -225,6 +233,7 @@ input::-webkit-input-placeholder {
 
 .search-dropdown {
   background-color: white;
+  align-items: center;
 }
 
 /*mainly part of scring*/
@@ -265,28 +274,26 @@ input::-webkit-input-placeholder {
 }
 .bookname {
   color: gray;
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 40px;
 }
 .describe {
   lines: 2;
   color: gray;
-  font-size: 36px;
-  font-weight: bold;
+  font-size: 40px;
 }
 
 .priceandseller {
-  margin-top: 10px;
+  margin:5px 15px;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-around;
   height: 100px;
 }
 .price {
   color: gray;
-  font-size: 60px;
+  font-size: 45px;
   color: #ff7f50;
-  width: 45%;
+  width: 33%;
 }
 .sellervia {
   width: 80px;
@@ -294,30 +301,32 @@ input::-webkit-input-placeholder {
 }
 .sellername {
   width: 40%;
+  padding-right: 5px;
   color: gray;
-  font-size: 38px;
+  font-size: 36px;
 }
 
 .footerzone {
   justify-content: center;
   align-items: center;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
-  height: 10%;
-  border-top: 3px solid;
-  color: #e0e0e0;
+  height: 11%;
+  border-top: 1px gray solid;
+  //color: #e0e0e0;
+  background: white;
 }
 .footer {
-  margin-top: 10px;
+  margin-top: 4px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   position: absolute;
-  width: 600px;
-  height: 120px;
+  width: 100%;
+  height: 100%;
 }
 .footericon {
-  height: 96px;
-  width: 96px;
+  height: 80px;
+  width: 80px;
 }
 </style>
