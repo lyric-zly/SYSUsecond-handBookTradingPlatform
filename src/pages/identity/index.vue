@@ -1,3 +1,4 @@
+ 
 <template>
   <div class="identity">
     <router-view class="pos" />
