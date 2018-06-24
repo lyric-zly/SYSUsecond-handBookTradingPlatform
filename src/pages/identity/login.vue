@@ -4,6 +4,8 @@
     <div class="login">
       <div class="input-wrapper">
         <input
+		  @input="oninputUserName" 
+		  @change="onchangeUserName"
           v-model="userNumber"
           class="input"
           type="text"
@@ -15,6 +17,8 @@
       </div>
       <div class="input-wrapper">
         <input
+			@input="oninputUserPassword" 
+		  @change="onchangeUserPassword"
           v-model="userPassword"
           class="input"
           type="password"
@@ -49,12 +53,27 @@ const modal = weex.requireModule('modal');
 module.exports = {
   data() {
     return {
-      userNumber: 15331060,
+      userNumber: '15331060',
       userPassword: '12345678',
       hint: '',
     };
   },
   methods: {
+      oninputUserName: function(event){
+      this.userNumber =  event.value;
+    },
+  
+	onchangeUserName: function(event){
+      this.userNumber =  event.value;
+    },
+  
+    oninputUserPassword: function(event){
+      this.userPassword =  event.value;
+    },
+  
+  onchangeUserPassword: function(event){
+      this.userPassword =  event.value;
+    },
     /* 找回密码 */
     findPassword() {
       this.$router.push({ name: 'forget-password' });
