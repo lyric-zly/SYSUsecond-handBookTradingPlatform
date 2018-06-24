@@ -33,7 +33,7 @@
     <div class="cells">
       <div class="head">
         <div class="block">
-          <text class="text-h3">我是买家</text>
+          <text class="text-h3">我是卖家</text>
         </div>
         <div class="line"></div>
       </div>
@@ -45,7 +45,7 @@
         <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-b36db1a96ee2edae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">等待确认</text>
       </div>
-      <div class="item" @click="goTo(4)">
+      <div class="item" @click="goTo(5)">
         <image style="width:96px;height:96px;" src="https://upload-images.jianshu.io/upload_images/12650180-7f2b966fd2463e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/96" />
         <text class="text-h4">已卖出</text>
       </div>

@@ -15,15 +15,23 @@
                 <text class="text-h1">{{item.price}}</text>
               </div>
               <div v-if="sn === 1" class="op">
-                <wxc-button text="下架" type="white" size="small" class="buttons"></wxc-button>
-                <wxc-button text="编辑" type="white" size="small" class="buttons"></wxc-button>
+                <div @click="shelves(item.bookId)">
+                  <wxc-button text="下架" type="white" size="small" class="buttons"></wxc-button>
+                </div>
+                <div @click="deliverys(item.bookId)">
+                  <wxc-button text="确认送货" type="white" size="small" class="buttons"></wxc-button>
+                </div>
               </div>
-              <div v-else-if="sn === 2" class="op">
+              <div v-else-if="sn === 2" class="op" @click="cancels(item.tradeId)">
                 <wxc-button text="取消交易" type="white" size="small" class="buttons"></wxc-button>
               </div>
               <div v-else-if="sn === 3" class="op">
-                <wxc-button text="确认收货" type="white" size="small" class="buttons"></wxc-button>
-                <wxc-button text="取消交易" type="white" size="small" class="buttons"></wxc-button>
+                <div @click='receives(item.tradeId)'>
+                  <wxc-button text="确认收货" type="white" size="small" class="buttons"></wxc-button>
+                </div>
+                <div @click="cancels(item.tradeId)">
+                  <wxc-button text="取消交易" type="white" size="small" class="buttons"></wxc-button>
+                </div>
               </div>
             </div>
           </div>
@@ -35,9 +43,10 @@
 
 <script>
 import { WxcMinibar, WxcButton } from 'weex-ui';
+// import axios from 'axios';
 
 const stream = weex.requireModule('stream');
-// const modal = weex.requireModule('modal');
+const modal = weex.requireModule('modal');
 export default {
   components: { WxcMinibar, WxcButton },
   data() {
@@ -61,31 +70,34 @@ export default {
         this.title = '等待收货';
         break;
       case 4:
-        this.title = '已确认';
+        this.title = '已买入';
+        break;
+      case 5:
+        this.title = '已卖出';
         break;
       default:
         break;
     }
 
-    if (Number(this.$route.params.state) === 1) {
-      const USER_URL = 'http://123.207.86.98:3000/api/user/login';
-      stream.fetch(
-        {
-          method: 'GET',
-          url: USER_URL,
-          type: 'json',
-          headers: {
-            Authorization: `Bearer ${this.$store.default.state.token}`,
-            'Content-Type': 'application/json',
-          },
+    const USER_URL = 'http://123.207.86.98:3000/api/user/login';
+    stream.fetch(
+      {
+        method: 'GET',
+        url: USER_URL,
+        type: 'json',
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
         },
-        (ret) => {
-          if (ret.ok) {
-            this.sid = ret.data.studentId;
-          }
-        },
-      );
+      },
+      (ret) => {
+        if (ret.ok) {
+          this.sid = ret.data.studentId;
+        }
+      },
+    );
 
+    if (Number(this.$route.params.state) === 1) {
       const BOOK_URL = 'http://123.207.86.98:3000/api/book';
       stream.fetch(
         {
@@ -117,10 +129,21 @@ export default {
           },
         },
         (ret) => {
-          if (!ret.ok) {
-            //
-          } else {
-            this.lists = ret.data.filter(item => item.state === Number(this.$route.params.state));
+          if (ret.ok) {
+            if (this.sn === 5) {
+              this.sn = 4;
+              this.lists = ret.data.filter(item => (item.state === Number(this.$route.params.state)
+                && item.publisherId === this.sid));
+            } else if (this.sn === 4) {
+              this.lists = ret.data.filter(item => (item.state === Number(this.$route.params.state)
+                && item.buyerId === this.sid));
+            } else if (this.sn === 3) {
+              this.lists = ret.data.filter(item => item.state === Number(this.$route.params.state)
+                && item.buyerId === this.sid);
+            } else {
+              this.lists = ret.data.filter(item => item.state === Number(this.$route.params.state)
+                && item.sellerId === this.sid);
+            }
           }
         },
       );
@@ -128,6 +151,125 @@ export default {
   },
 
   methods: {
+    deliverys(tradeId) {
+      // axios
+      //   .post(`http://123.207.86.98:3000/api/trade/${tradeId}/send`)
+      //   .then(() => {
+      //     modal.toast({
+      //       message: '操作成功',
+      //       duration: 3.0,
+      //     });
+      //   }).catch(() => {
+      //     modal.toast({
+      //       message: '操作失败',
+      //       duration: 3.0,
+      //     });
+      //   });
+      stream.fetch(
+        {
+          method: 'POST',
+          url: `http://123.207.86.98:3000/api/trade/${tradeId}/send`,
+          type: 'json',
+          headers: {
+            Authorization: `Bearer ${this.$store.default.state.token}`,
+            'Content-Type': 'application/json',
+          },
+        },
+        (ret) => {
+          if (ret.ok) {
+            modal.toast({
+              message: '操作成功',
+              duration: 3.0,
+            });
+          } else {
+            modal.toast({
+              message: '操作失败',
+              duration: 3.0,
+            });
+          }
+        },
+      );
+    },
+    receives(tradeId) {
+      // debugger;
+      // console.log(tradeId);
+      stream.fetch(
+        {
+          method: 'POST',
+          url: `http://123.207.86.98:3000/api/trade/${tradeId}/recieve`,
+          type: 'json',
+          headers: {
+            Authorization: `Bearer ${this.$store.default.state.token}`,
+            'Content-Type': 'application/json',
+          },
+        },
+        (ret) => {
+          if (ret.ok) {
+            modal.toast({
+              message: '操作成功',
+              duration: 3.0,
+            });
+          } else {
+            modal.toast({
+              message: '操作失败',
+              duration: 3.0,
+            });
+          }
+        },
+      );
+    },
+    cancels(tradeId) {
+      stream.fetch(
+        {
+          method: 'DELETE',
+          url: `http://123.207.86.98:3000/api/trade/${tradeId}`,
+          type: 'json',
+          headers: {
+            Authorization: `Bearer ${this.$store.default.state.token}`,
+            'Content-Type': 'application/json',
+          },
+        },
+        (ret) => {
+          if (ret.ok) {
+            modal.toast({
+              message: '操作成功',
+              duration: 3.0,
+            });
+          } else {
+            modal.toast({
+              message: '操作失败',
+              duration: 3.0,
+            });
+          }
+        },
+      );
+    },
+    shelves(bookId) {
+      stream.fetch(
+        {
+          method: 'DELETE',
+          url: `http://123.207.86.98:3000/api/book/${bookId}`,
+          type: 'json',
+          headers: {
+            Authorization: `Bearer ${this.$store.default.state.token}`,
+            'Content-Type': 'application/json',
+          },
+        },
+        (ret) => {
+          if (ret.ok) {
+            modal.toast({
+              message: '操作成功',
+              duration: 3.0,
+            });
+          } else {
+            modal.toast({
+              message: '操作失败',
+              duration: 3.0,
+            });
+          }
+        },
+      );
+    },
   },
 };
 </script>
