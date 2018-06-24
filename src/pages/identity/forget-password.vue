@@ -1,3 +1,4 @@
+//自己用github重新上传代码
 <template>
   <div class="wrapper">
     <image class = "logo_picture" resize="contain" src = "https://wx4.sinaimg.cn/mw690/006tzQZEgy1frtl3gqkmmj30bi08egph.jpg"/>
