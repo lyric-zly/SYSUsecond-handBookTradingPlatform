@@ -3,7 +3,12 @@
       <div class="back">
         <text class="text" @click="goback"></text>
       </div>
-      <image class="image" resize="contain" src="https://gw.alicdn.com/tfs/TB1dZ4WowoQMeJjy0FnXXb8gFXa-950-1267.jpg" />
+      <image class="image" resize="contain" src="<template>
+  <div class="wrapper">
+      <div class="back">
+        <text class="text" @click="goback"></text>
+      </div>
+      <image class="image" resize="contain" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529822984782&di=60b120e26ae5966c340dcaf9c33c1da7&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Ftransform%2F20151102%2FSrZc-fxkhcfn4276832.jpg" />
     <div class="second">
       <text class="price">¥{{price}}</text>
       <div class="userinfo" @click="chat">
@@ -41,6 +46,8 @@ export default {
       nickname: '',
       bookname: '',
       description: '',
+	  state:0,
+	  sessionID:1
     };
   },
   methods: {
@@ -48,7 +55,35 @@ export default {
       this.$router.back(-1);
     },
     chat() {
-      this.$router.push({ path: '/chat' });
+      stream.fetch({
+        method: 'POST',
+        url: `http://123.207.86.98:3000/api/message/to/${this.publisherId}`,
+        type: 'json',
+        headers: {
+          Authorization: `Bearer ${this.$store.default.state.token}`,
+          'Content-Type': 'application/json',
+        },
+		body: JSON.stringify({
+		  number:this.publisherId,
+		  role:'buyer',
+		  msg:'Hello'
+        }),
+      },
+      (ret) => {
+        if (!ret.ok) {
+          modal.toast({
+            message: 'failed',
+            duration: 2.0,
+          });
+        } else {
+          modal.toast({
+            message: '发送成功',
+            duration: 2.0,
+          });
+		  this.sessionID = rec.data.sessionID;
+        }
+      });
+      this.$router.push({ path: '/chat/${this.sessionID}' });
     },
     trade() {
       stream.fetch({
@@ -63,7 +98,7 @@ export default {
       (ret) => {
         if (!ret.ok) {
           modal.toast({
-            message: 'failed',
+            message: '图书正在出售',
             duration: 2.0,
           });
         } else {
@@ -100,6 +135,7 @@ export default {
           this.nickname = ret.data.author;
           this.bookname = ret.data.name;
           this.description = ret.data.description;
+		  this.state = ret.data.state;
           this.lists = ret.data.comment.split(' ').filter(item => !!item);
         }
       },

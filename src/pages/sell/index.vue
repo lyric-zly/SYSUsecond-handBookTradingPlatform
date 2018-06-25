@@ -158,7 +158,7 @@ export default {
 .title {
   flex-direction: row;
   display: flex;
-  background: #00e3e3;
+  background: rgb(198,233,235);
   height: 80px;
   width: 100%;
 }
@@ -242,7 +242,7 @@ export default {
   color: #00caca;
 }
 .text {
-  font-size: 40px;
+  font-size: 35px;
   color: rgb(0, 0, 0);
 }
 .buy {
@@ -253,8 +253,8 @@ export default {
   margin-top: 50px;
   border: 2px solid;
   border-radius: 20px;
-  color: #00caca;
-  background: #00e3e3;
+  color: rgb(198,233,235);
+  background: rgb(198,233,235);
 }
 .buytext {
   font-size: 40px;
